@@ -1,0 +1,117 @@
+.section {
+  padding: 6rem 6%;
+  background: transparent;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4FFFE0;
+  margin-bottom: 0.8rem;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btnOutline {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #E8EDF8;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.btnOutline:hover {
+  border-color: rgba(79, 255, 224, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.big { grid-column: span 2; }
+
+.imgWrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  border-radius: 16px;
+
+  /* Glass — not dark navy */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 8, 24, 0);
+  transition: background 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  border-radius: 16px;
+}
+.card:hover .overlay { background: rgba(2, 8, 24, 0.75); }
+
+.info {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.3s;
+}
+.card:hover .info { transform: translateY(0); opacity: 1; }
+
+.infoTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.infoSub { font-size: 0.8rem; color: #4FFFE0; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .big { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .big { grid-column: span 1; }
+}

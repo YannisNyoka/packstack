@@ -1,0 +1,115 @@
+.footer {
+  background: rgba(2, 8, 24, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 4rem 6% 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  display: block;
+}
+.logo span {
+  background: linear-gradient(135deg, #4FFFE0, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.8;
+  max-width: 280px;
+  margin-bottom: 1.5rem;
+}
+
+.socials { display: flex; gap: 0.75rem; }
+
+.socialLink {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.socialLink:hover {
+  background: rgba(79, 255, 224, 0.1);
+  border-color: rgba(79, 255, 224, 0.3);
+  color: #4FFFE0;
+}
+
+.col h5 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.col ul a {
+  font-size: 0.87rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.col ul a:hover { color: #4FFFE0; }
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bottom p { font-size: 0.8rem; color: rgba(255, 255, 255, 0.25); }
+
+.bottomLinks { display: flex; gap: 1.5rem; }
+
+.bottomLinks a {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.bottomLinks a:hover { color: rgba(255, 255, 255, 0.6); }
+
+@media (max-width: 900px) {
+  .top { grid-template-columns: 1fr 1fr; }
+  .brand { grid-column: span 2; }
+}
+@media (max-width: 500px) {
+  .top { grid-template-columns: 1fr; }
+  .brand { grid-column: span 1; }
+}
