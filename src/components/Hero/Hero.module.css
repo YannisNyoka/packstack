@@ -107,7 +107,7 @@
 
 .heading {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  font-size: clamp(2.2rem, 6.5vw, 5rem);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -127,7 +127,7 @@
 }
 
 .sub {
-  font-size: 1.08rem;
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
   color: rgba(232, 237, 248, 0.8);
   max-width: 540px;
   line-height: 1.8;
@@ -184,8 +184,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 3rem;
-  margin-top: 4.5rem;
+  gap: 2rem;
+  margin-top: 4rem;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.06);
@@ -193,7 +193,7 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 2rem 3rem;
+  padding: 1.8rem 2.5rem;
   width: 100%;
   max-width: 700px;
 }
@@ -207,7 +207,7 @@
 
 .statNum {
   font-family: 'Syne', sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.02em;
@@ -221,7 +221,7 @@
 }
 
 .statLabel {
-  font-size: 0.78rem;
+  font-size: clamp(0.7rem, 1.5vw, 0.78rem);
   color: rgba(255, 255, 255, 0.45);
   margin-top: 0.3rem;
   letter-spacing: 0.02em;
@@ -243,4 +243,29 @@
   background: linear-gradient(90deg, transparent, #4FFFE0, #3B82F6, transparent);
   animation: pulseLine 3s ease-in-out infinite;
   transform-origin: left;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .hero { padding: 8rem 5% 4rem; }
+  .stats { gap: 1.5rem; padding: 1.5rem 2rem; }
+  .orb1 { width: 400px; height: 400px; }
+  .orb2 { width: 300px; height: 300px; }
+  .orb3 { display: none; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero { padding: 7rem 5% 3.5rem; }
+  .eyebrow { font-size: 0.65rem; padding: 0.35rem 0.85rem; }
+  .buttons { flex-direction: column; width: 100%; }
+  .btnPrimary, .btnSecondary { width: 100%; text-align: center; }
+  .stats {
+    gap: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .orb1 { width: 280px; height: 280px; }
+  .orb2 { width: 220px; height: 220px; }
 }

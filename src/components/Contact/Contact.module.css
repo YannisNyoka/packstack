@@ -40,7 +40,7 @@
 
 .title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.02em;
@@ -49,7 +49,7 @@
 }
 
 .sub {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: rgba(232, 237, 248, 0.7);
   line-height: 1.8;
   margin-bottom: 2.5rem;
@@ -111,6 +111,7 @@
   transition: all 0.2s;
   margin-top: 0.5rem;
   box-shadow: 0 0 30px rgba(79, 255, 224, 0.2);
+  width: auto;
 }
 .submitBtn:hover:not(:disabled) {
   transform: translateY(-2px);
@@ -153,7 +154,19 @@
 
 .successMsg p { font-size: 1rem; color: #E8EDF8; }
 
-@media (max-width: 700px) {
-  .box { padding: 3rem 1.5rem; }
+/* Tablet */
+@media (max-width: 768px) {
+  .section { padding: 5rem 5%; }
+  .box { padding: 3.5rem 2.5rem; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
   .row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 4rem 5%; }
+  .box { padding: 2.5rem 1.5rem; border-radius: 16px; }
+  .submitBtn { width: 100%; }
 }

@@ -13,7 +13,7 @@
 }
 
 .scrolled {
-  background: rgba(2, 8, 24, 0.7);
+  background: rgba(2, 8, 24, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -25,6 +25,7 @@
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #fff;
+  cursor: pointer;
 }
 .logo span {
   background: linear-gradient(135deg, #4FFFE0, #3B82F6);
@@ -43,7 +44,7 @@
   background: none;
   border: none;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
   transition: color 0.2s;
   padding: 0;
@@ -75,6 +76,7 @@
   background: none;
   border: none;
   padding: 4px;
+  cursor: pointer;
 }
 .hamburger span {
   display: block;
@@ -92,7 +94,7 @@
   gap: 2rem;
   position: fixed;
   inset: 0;
-  background: rgba(2, 8, 24, 0.92);
+  background: rgba(2, 8, 24, 0.95);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   z-index: 200;
@@ -109,6 +111,20 @@
   cursor: pointer;
 }
 
+.mobileLogo {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.mobileLogo span {
+  background: linear-gradient(135deg, #4FFFE0, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .mobileLink {
   font-family: 'Syne', sans-serif;
   font-size: 1.5rem;
@@ -117,6 +133,7 @@
   background: none;
   border: none;
   transition: color 0.2s;
+  cursor: pointer;
 }
 .mobileLink:hover { color: #4FFFE0; }
 
@@ -129,9 +146,17 @@
   border-radius: 100px;
   border: none;
   margin-top: 1rem;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
   .links, .cta { display: none; }
   .hamburger { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .nav { padding: 1rem 5%; }
+  .logo { font-size: 1.3rem; }
+  .mobileLink { font-size: 1.3rem; }
+  .mobileLogo { font-size: 1.7rem; }
 }
