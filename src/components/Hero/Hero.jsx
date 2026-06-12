@@ -1,12 +1,25 @@
 import styles from './Hero.module.css'
 import Droplet from '../Droplet/Droplet'
+import { useCounter } from '../../hooks/useCounter'
 
 const stats = [
-  { num: '120', suffix: '+', label: 'Projects Delivered' },
-  { num: '98', suffix: '%', label: 'Client Satisfaction' },
-  { num: '5', suffix: 'x', label: 'Average ROI' },
-  { num: '8', suffix: '+', label: 'Years in Business' },
+  { num: 120, suffix: '+', label: 'Projects Delivered' },
+  { num: 98, suffix: '%', label: 'Client Satisfaction' },
+  { num: 5, suffix: 'x', label: 'Average ROI' },
+  { num: 8, suffix: '+', label: 'Years in Business' },
 ]
+
+function StatItem({ num, suffix, label }) {
+  const { count, ref } = useCounter(num, 2000)
+  return (
+    <div ref={ref} className={styles.statItem}>
+      <div className={styles.statNum}>
+        {count}<span>{suffix}</span>
+      </div>
+      <div className={styles.statLabel}>{label}</div>
+    </div>
+  )
+}
 
 export default function Hero() {
   const handleNav = (href) => {
@@ -16,7 +29,6 @@ export default function Hero() {
 
   return (
     <section className={styles.hero} id="home">
-      {/* Animated background orbs */}
       <div className={styles.orb1} />
       <div className={styles.orb2} />
       <div className={styles.orb3} />
@@ -45,16 +57,10 @@ export default function Hero() {
 
       <Droplet delay={300} threshold={0.05}>
         <div className={styles.buttons}>
-          <button
-            className={styles.btnPrimary}
-            onClick={() => handleNav('#contact')}
-          >
+          <button className={styles.btnPrimary} onClick={() => handleNav('#contact')}>
             Start a Project
           </button>
-          <button
-            className={styles.btnSecondary}
-            onClick={() => handleNav('#portfolio')}
-          >
+          <button className={styles.btnSecondary} onClick={() => handleNav('#portfolio')}>
             See Our Work →
           </button>
         </div>
@@ -62,13 +68,8 @@ export default function Hero() {
 
       <Droplet delay={400} threshold={0.05}>
         <div className={styles.stats}>
-          {stats.map((s, i) => (
-            <div key={s.label} className={styles.statItem}>
-              <div className={styles.statNum}>
-                {s.num}<span>{s.suffix}</span>
-              </div>
-              <div className={styles.statLabel}>{s.label}</div>
-            </div>
+          {stats.map(s => (
+            <StatItem key={s.label} {...s} />
           ))}
         </div>
       </Droplet>

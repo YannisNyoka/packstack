@@ -1,0 +1,35 @@
+.glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 255, 224, 0.04) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  transition: none;
+}
+
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(79, 255, 224, 0.6);
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 900px) {
+  .glow, .dot { display: none; }
+}

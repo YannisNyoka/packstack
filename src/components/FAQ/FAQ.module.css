@@ -1,0 +1,118 @@
+.section {
+  padding: 6rem 6%;
+  background: transparent;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4FFFE0;
+  margin-bottom: 0.8rem;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.sub {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: rgba(232, 237, 248, 0.7);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.list {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.itemOpen {
+  border-color: rgba(79, 255, 224, 0.2);
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.8rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(0.92rem, 2vw, 1rem);
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.question:hover { color: #4FFFE0; }
+
+.icon {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s, color 0.3s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.iconOpen {
+  transform: rotate(45deg);
+  color: #4FFFE0;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 1.8rem;
+}
+
+.answerOpen {
+  max-height: 300px;
+  padding: 0 1.8rem 1.4rem;
+}
+
+.answer p {
+  font-size: clamp(0.88rem, 1.8vw, 0.94rem);
+  color: rgba(232, 237, 248, 0.7);
+  line-height: 1.8;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .section { padding: 4rem 5%; }
+  .question { padding: 1.2rem 1.2rem; font-size: 0.9rem; }
+  .answer { padding: 0 1.2rem; }
+  .answerOpen { padding: 0 1.2rem 1.2rem; }
+}
