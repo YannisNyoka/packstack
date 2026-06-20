@@ -1,0 +1,35 @@
+.btn {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 90;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(79, 255, 224, 0.25);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .btn {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+}

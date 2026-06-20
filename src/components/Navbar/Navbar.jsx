@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useSound } from '../../context/SoundContext'
 import styles from './Navbar.module.css'
 
 const links = [
@@ -11,6 +12,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { playHover, playClick } = useSound()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -19,6 +21,7 @@ export default function Navbar() {
   }, [])
 
   const handleNav = (href) => {
+    playClick()
     setMenuOpen(false)
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -34,14 +37,22 @@ export default function Navbar() {
         <ul className={styles.links}>
           {links.map(l => (
             <li key={l.label}>
-              <button onClick={() => handleNav(l.href)} className={styles.navLink}>
+              <button
+                onClick={() => handleNav(l.href)}
+                onMouseEnter={playHover}
+                className={styles.navLink}
+              >
                 {l.label}
               </button>
             </li>
           ))}
         </ul>
 
-        <button className={styles.cta} onClick={() => handleNav('#contact')}>
+        <button
+          className={styles.cta}
+          onMouseEnter={playHover}
+          onClick={() => handleNav('#contact')}
+        >
           Get a Quote
         </button>
 
@@ -61,6 +72,9 @@ export default function Navbar() {
           <button className={styles.close} onClick={() => setMenuOpen(false)}>
             ✕
           </button>
+          <div className={styles.mobileLogo}>
+            Pack<span>Stack</span>
+          </div>
           {links.map(l => (
             <button
               key={l.label}

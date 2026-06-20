@@ -1,0 +1,23 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(79, 255, 224, 0.25);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(79, 255, 224, 0.25);
+  color: #fff;
+}
+
+/* Smooth focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(79, 255, 224, 0.5);
+  outline-offset: 2px;
+}

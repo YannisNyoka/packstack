@@ -14,8 +14,8 @@ const footerLinks = {
     'Careers',
   ],
   Contact: [
-    'hello@packstack.co.za',
-    '+27 11 000 0000',
+    'packstack36@gmail.com',
+    '+27782685826',
     'Johannesburg, SA',
   ],
 }

@@ -1,6 +1,7 @@
 import styles from './Hero.module.css'
 import Droplet from '../Droplet/Droplet'
 import { useCounter } from '../../hooks/useCounter'
+import { useSound } from '../../context/SoundContext'
 
 const stats = [
   { num: 120, suffix: '+', label: 'Projects Delivered' },
@@ -22,7 +23,10 @@ function StatItem({ num, suffix, label }) {
 }
 
 export default function Hero() {
+  const { playHover, playClick } = useSound()
+
   const handleNav = (href) => {
+    playClick()
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
@@ -57,10 +61,18 @@ export default function Hero() {
 
       <Droplet delay={300} threshold={0.05}>
         <div className={styles.buttons}>
-          <button className={styles.btnPrimary} onClick={() => handleNav('#contact')}>
+          <button
+            className={styles.btnPrimary}
+            onMouseEnter={playHover}
+            onClick={() => handleNav('#contact')}
+          >
             Start a Project
           </button>
-          <button className={styles.btnSecondary} onClick={() => handleNav('#portfolio')}>
+          <button
+            className={styles.btnSecondary}
+            onMouseEnter={playHover}
+            onClick={() => handleNav('#portfolio')}
+          >
             See Our Work →
           </button>
         </div>

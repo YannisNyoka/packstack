@@ -7,6 +7,7 @@ import BackToTop from './components/BackToTop/BackToTop'
 import WhatsApp from './components/WhatsApp/WhatsApp'
 import CursorGlow from './components/CursorGlow/CursorGlow'
 import CookieBanner from './components/CookieBanner/CookieBanner'
+import SoundToggle from './components/SoundToggle/SoundToggle'
 import './App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         </Routes>
         <BackToTop />
         <WhatsApp />
+        <SoundToggle />
         <CookieBanner />
       </div>
     </>
