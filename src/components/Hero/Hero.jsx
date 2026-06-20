@@ -4,7 +4,7 @@ import { useCounter } from '../../hooks/useCounter'
 import { useSound } from '../../context/SoundContext'
 
 const stats = [
-  { num: 120, suffix: '+', label: 'Projects Delivered' },
+  { num: 6, suffix: '+', label: 'Projects Delivered' },
   { num: 98, suffix: '%', label: 'Client Satisfaction' },
   { num: 5, suffix: 'x', label: 'Average ROI' },
   { num: 8, suffix: '+', label: 'Years in Business' },
