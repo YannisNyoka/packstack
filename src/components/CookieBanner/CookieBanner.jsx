@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Cookie } from 'lucide-react'
 import styles from './CookieBanner.module.css'
 
 export default function CookieBanner() {
@@ -26,7 +27,9 @@ export default function CookieBanner() {
   return (
     <div className={styles.banner}>
       <div className={styles.content}>
-        <div className={styles.icon}>🍪</div>
+        <div className={styles.icon}>
+          <Cookie size={22} strokeWidth={2} color="var(--blue)" />
+        </div>
         <div className={styles.text}>
           <p className={styles.title}>We use cookies</p>
           <p className={styles.desc}>

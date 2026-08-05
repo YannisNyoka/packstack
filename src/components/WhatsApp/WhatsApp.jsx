@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { X } from 'lucide-react'
 import styles from './WhatsApp.module.css'
 
 export default function WhatsApp() {
@@ -24,7 +25,7 @@ export default function WhatsApp() {
             onClick={e => { e.preventDefault(); setTooltip(false) }}
             aria-label="Close tooltip"
           >
-            ✕
+            <X size={13} strokeWidth={2.5} />
           </button>
         </div>
       )}

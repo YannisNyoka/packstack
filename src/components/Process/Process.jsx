@@ -1,41 +1,37 @@
+import { Check } from 'lucide-react'
 import styles from './Process.module.css'
 import Droplet from '../Droplet/Droplet'
 
 const steps = [
   {
     num: '01',
-    title: 'Discovery & Strategy',
-    desc: 'We dig into your goals, audience, and market to craft a tailored roadmap before a single line of code is written.',
+    title: 'We Set Up Your Account',
+    desc: 'Your services, staff and working hours loaded in - your booking page and dashboard ready to go.',
   },
   {
     num: '02',
-    title: 'Design & Prototype',
-    desc: 'Wireframes and interactive prototypes that get stakeholder buy-in early, cutting revision time downstream.',
+    title: 'Share Your Booking Link',
+    desc: 'On your website, your Instagram bio, or straight over WhatsApp - wherever your customers already are.',
   },
   {
     num: '03',
-    title: 'Build & Integrate',
-    desc: "Clean, maintainable code. We build in sprints with full transparency — you always know what's shipped.",
+    title: 'Customers Book Themselves',
+    desc: 'Real, live availability - no back-and-forth. They get a confirmation and a link to reschedule or cancel.',
   },
   {
     num: '04',
-    title: 'Launch & Grow',
-    desc: 'Deployment, QA, performance tuning — and ongoing growth support so your product keeps improving post-launch.',
+    title: 'You Run the Business',
+    desc: 'Every booking in one dashboard. Staff manage their own day; you see the whole business at a glance.',
   },
 ]
 
-const bars = [
-  { label: 'Organic Traffic', value: '+240%', width: '82%' },
-  { label: 'Conversion Rate', value: '+95%', width: '65%' },
-  { label: 'Page Speed Score', value: '98/100', width: '95%' },
-  { label: 'Social Engagement', value: '+180%', width: '73%' },
-]
-
-const metrics = [
-  { num: '14', suffix: 'd', label: 'Avg. MVP delivery' },
-  { num: '3', suffix: 'x', label: 'Faster than agency avg.' },
-  { num: '24', suffix: '/7', label: 'Monitoring & support' },
-  { num: '100', suffix: '%', label: 'On-time delivery rate' },
+const included = [
+  'Online booking page',
+  'Staff scheduling & time off',
+  'WhatsApp & email confirmations',
+  'Loyalty points',
+  'Deposit payments via Yoco',
+  'Your own custom domain',
 ]
 
 export default function Process() {
@@ -44,11 +40,11 @@ export default function Process() {
       <div className={styles.inner}>
         <Droplet>
           <div className={styles.left}>
-            <div className={styles.label}>Our Process</div>
-            <h2 className={styles.title}>How We Turn Ideas Into Reality</h2>
+            <div className={styles.label}>Getting Started</div>
+            <h2 className={styles.title}>Live in an Afternoon, Not Weeks</h2>
             <p className={styles.sub}>
-              A clear, proven process means no surprises — just consistent
-              delivery at every stage.
+              No technical setup on your end - just tell us about your business and start
+              taking bookings.
             </p>
             <div className={styles.steps}>
               {steps.map(s => (
@@ -66,28 +62,15 @@ export default function Process() {
 
         <Droplet delay={200}>
           <div className={styles.visual}>
-            <div className={styles.vizTitle}>Typical Project Outcomes</div>
-            {bars.map(b => (
-              <div key={b.label} className={styles.barRow}>
-                <div className={styles.barLabels}>
-                  <span>{b.label}</span>
-                  <span className={styles.barValue}>{b.value}</span>
-                </div>
-                <div className={styles.barBg}>
-                  <div className={styles.barFill} style={{ width: b.width }} />
-                </div>
-              </div>
-            ))}
-            <div className={styles.metricsGrid}>
-              {metrics.map(m => (
-                <div key={m.label} className={styles.metricCard}>
-                  <div className={styles.metricNum}>
-                    {m.num}<span>{m.suffix}</span>
-                  </div>
-                  <div className={styles.metricLabel}>{m.label}</div>
-                </div>
+            <div className={styles.vizTitle}>What's Included</div>
+            <ul className={styles.checklist}>
+              {included.map(item => (
+                <li key={item} className={styles.checklistItem}>
+                  <Check size={15} strokeWidth={2.5} className={styles.checklistCheck} />
+                  {item}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </Droplet>
       </div>

@@ -11,59 +11,45 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #E8EDF8;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #33404f;
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
   -webkit-font-smoothing: antialiased;
-  background: #020a18;
+  background: #ffffff;
   min-height: 100vh;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url('/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -2;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(2, 8, 24, 0.6);
-  z-index: -1;
-  pointer-events: none;
 }
 
 #root {
   position: relative;
-  z-index: 1;
-  overflow-x: hidden;
   width: 100%;
 }
 
 :root {
-  --cyan: #4FFFE0;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-primary: #E8EDF8;
-  --text-muted: #8A94AA;
-  --text-dim: #5A6478;
+  --blue: #2f6fed;
+  --blue-dark: #1d4fc4;
+  --blue-light: #eaf1fe;
+  --navy: #0f1b2d;
+  --text: #33404f;
+  --text-muted: #6b7684;
+  --border: #e5e9f0;
+  --bg: #ffffff;
+  --bg-alt: #f7f9fc;
+  --font-cursive: 'Caveat', cursive;
+  --accent: #ffc247;
+  --radius: 14px;
+  --shadow: 0 2px 6px rgba(15, 27, 45, 0.04);
+  --shadow-hover: 0 12px 32px rgba(15, 27, 45, 0.08);
 }
 
 a { text-decoration: none; color: inherit; }
-button { cursor: pointer; font-family: 'Inter', sans-serif; }
+button { cursor: pointer; font-family: inherit; }
 img { max-width: 100%; display: block; }
 
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(79, 255, 224, 0.25);
+  background: #d3dae5;
   border-radius: 100px;
 }

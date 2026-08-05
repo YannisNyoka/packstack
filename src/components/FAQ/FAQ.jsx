@@ -1,39 +1,40 @@
 import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 import styles from './FAQ.module.css'
 import Droplet from '../Droplet/Droplet'
 
 const faqs = [
   {
-    q: 'How long does it take to build a website?',
-    a: 'Most websites take between 2 to 6 weeks depending on complexity. A simple 5-page site can be done in 2 weeks, while a full custom web app typically takes 6–12 weeks. We always agree on a timeline upfront.',
+    q: 'Is there a free trial?',
+    a: 'Yes — every new business starts on a free trial, no card required upfront. You only need to add billing once you\'re ready to go live.',
+  },
+  {
+    q: 'Do I need any technical skills to set this up?',
+    a: 'No. We provision your account and load in your services, staff and working hours for you — you get a ready-to-use booking page and dashboard from day one.',
+  },
+  {
+    q: 'Can customers pay a deposit when they book?',
+    a: 'If you connect Yoco, yes — you can require a deposit at booking time so customers have skin in the game before they arrive. It\'s optional and off by default.',
+  },
+  {
+    q: 'Do customers need to create an account to book?',
+    a: 'No. Customers book from a public page with no login, and manage their own booking (reschedule or cancel) via a secure link sent over WhatsApp or email.',
+  },
+  {
+    q: 'Can I use my own domain instead of a packstack.co.za subdomain?',
+    a: 'Yes, on the Growth and Enterprise plans — point your existing domain at your booking page once it\'s verified.',
+  },
+  {
+    q: "What if my business isn't a salon?",
+    a: 'Right now the platform is built around salon-style service businesses — bookings, staff and services. More business types are on the roadmap, so get in touch if you want to be first in line for yours.',
+  },
+  {
+    q: 'Can you also build me something custom?',
+    a: 'Yes — outside the platform, our team still takes on bespoke web, app, SEO and social media projects, the same way we built PackStack itself. See "Custom Digital Work" below or get in touch.',
   },
   {
     q: 'Do you work with clients outside South Africa?',
-    a: 'Absolutely. We work with clients across Africa, Europe, and beyond. All communication happens via video calls, email, and project management tools — location is never a barrier.',
-  },
-  {
-    q: 'What do I need to provide to get started?',
-    a: 'Just your ideas and goals! We handle everything else — design, development, content guidance, and deployment. If you have existing branding or content, we\'ll incorporate it.',
-  },
-  {
-    q: 'Will my website work on mobile phones?',
-    a: 'Yes — every website and app we build is fully responsive and tested across all major devices and screen sizes including phones, tablets, laptops and desktops.',
-  },
-  {
-    q: 'How does SEO actually help my business?',
-    a: 'SEO helps your website rank higher on Google so more people find you organically — without paying for ads. Our SEO work includes technical optimisation, keyword strategy, content, and link building for long-term growth.',
-  },
-  {
-    q: 'What happens after my website launches?',
-    a: 'We offer ongoing support and maintenance packages. Every plan includes at least 3 months of post-launch support. We also offer monthly retainer packages for SEO, social media, and continuous development.',
-  },
-  {
-    q: 'Can you redesign my existing website?',
-    a: 'Yes! Redesigns are one of our specialties. We\'ll audit your current site, identify what\'s working and what isn\'t, and rebuild it with better design, performance, and conversion in mind.',
-  },
-  {
-    q: 'How do I track results?',
-    a: 'We set up Google Analytics, Search Console, and custom dashboards so you can see traffic, rankings, conversions, and social media performance all in one place. We also send monthly reports.',
+    a: 'For custom project work, absolutely — we work with clients across Africa, Europe and beyond over video calls, email and project management tools. The PackStack platform itself is priced in ZAR for South African businesses.',
   },
 ]
 
@@ -49,7 +50,8 @@ export default function FAQ() {
           <div className={styles.label}>FAQ</div>
           <h2 className={styles.title}>Frequently Asked Questions</h2>
           <p className={styles.sub}>
-            Everything you need to know about working with PackStack.
+            Everything you need to know about Booking Appointment, plus a few on our custom
+            project work.
           </p>
         </div>
       </Droplet>
@@ -66,9 +68,11 @@ export default function FAQ() {
                 aria-expanded={open === i}
               >
                 <span>{faq.q}</span>
-                <span className={`${styles.icon} ${open === i ? styles.iconOpen : ''}`}>
-                  +
-                </span>
+                <ChevronDown
+                  size={18}
+                  strokeWidth={2.5}
+                  className={`${styles.icon} ${open === i ? styles.iconOpen : ''}`}
+                />
               </button>
               <div className={`${styles.answer} ${open === i ? styles.answerOpen : ''}`}>
                 <p>{faq.a}</p>

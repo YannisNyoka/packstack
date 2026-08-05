@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { CheckCircle2 } from 'lucide-react'
 import styles from './Contact.module.css'
 
 export default function Contact() {
@@ -36,16 +37,18 @@ export default function Contact() {
       <div className={styles.box}>
         <div className={styles.glow} />
 
-        <div className={styles.label}>Let's Build Together</div>
+        <div className={styles.label}>Let's Get You Started</div>
         <h2 className={styles.title}>Ready to Grow Your Business?</h2>
         <p className={styles.sub}>
-          Tell us about your project. We'll get back to you within 24 hours
-          with a free consultation and tailored proposal.
+          Tell us whether you want to get your business booking online with PackStack, or
+          need something custom-built — we'll get back to you within 24 hours.
         </p>
 
         {status === 'success' ? (
           <div className={styles.successMsg}>
-            <div className={styles.successIcon}>✓</div>
+            <div className={styles.successIcon}>
+              <CheckCircle2 size={28} strokeWidth={2} color="var(--blue)" />
+            </div>
             <h3>Message Received!</h3>
             <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
           </div>
@@ -79,7 +82,7 @@ export default function Contact() {
             </div>
 
             <div className={styles.field}>
-              <label className={styles.fieldLabel}>Service You Need</label>
+              <label className={styles.fieldLabel}>What Do You Need?</label>
               <select
                 className={styles.input}
                 name="service"
@@ -87,21 +90,22 @@ export default function Contact() {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select a service…</option>
-                <option value="web">Web Development</option>
-                <option value="app">App Development</option>
+                <option value="">Select an option…</option>
+                <option value="packstack">Booking Appointment (Salon Booking Software)</option>
+                <option value="web">Custom Web Development</option>
+                <option value="app">Custom App Development</option>
                 <option value="seo">SEO</option>
                 <option value="social">Social Media</option>
-                <option value="multiple">Multiple Services</option>
+                <option value="other">Something Else</option>
               </select>
             </div>
 
             <div className={styles.field}>
-              <label className={styles.fieldLabel}>Tell Us About Your Project</label>
+              <label className={styles.fieldLabel}>Tell Us About Your Business</label>
               <textarea
                 className={`${styles.input} ${styles.textarea}`}
                 name="message"
-                placeholder="Describe your goals, timeline, or any other details…"
+                placeholder="What kind of business, and what you're looking for…"
                 value={form.message}
                 onChange={handleChange}
                 rows={4}

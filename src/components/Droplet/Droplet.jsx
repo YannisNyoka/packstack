@@ -12,16 +12,9 @@ export default function Droplet({
   return (
     <div
       ref={ref}
-      className={`
-        ${styles.droplet}
-        ${triggered ? styles.landed : ''}
-        ${className}
-      `}
+      className={`${styles.droplet} ${triggered ? styles.landed : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {triggered && (
-        <span className={styles.ripple} style={{ animationDelay: `${delay}ms` }} />
-      )}
       {children}
     </div>
   )

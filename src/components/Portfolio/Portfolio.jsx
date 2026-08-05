@@ -22,8 +22,12 @@ export default function Portfolio() {
     <section className={styles.section} id="portfolio">
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <div className={styles.label}>Our Work</div>
-          <h2 className={styles.title}>Projects We're Proud Of</h2>
+          <div className={styles.label}>Custom Digital Work</div>
+          <h2 className={styles.title}>Projects We've Built From Scratch</h2>
+          <p className={styles.sub}>
+            Beyond the platform, our team also takes on bespoke web and app projects — here's
+            some of that work.
+          </p>
         </div>
       </div>
 

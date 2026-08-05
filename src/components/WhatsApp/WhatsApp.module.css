@@ -2,46 +2,44 @@
   position: fixed;
   bottom: 5.5rem;
   right: 2rem;
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: #25D366;
+  background: #25d366;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 90;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: all 0.3s ease;
-  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn:hover {
-  transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   color: #fff;
 }
 
 .tooltip {
   position: absolute;
-  right: 64px;
+  right: 62px;
   bottom: 50%;
   transform: translateY(50%);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 0.6rem 1rem;
   white-space: nowrap;
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  animation: fadeIn 0.4s ease;
+  box-shadow: var(--shadow-hover);
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -50,23 +48,21 @@
 }
 
 .tooltip span {
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   font-weight: 600;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
+  color: var(--navy);
 }
 
 .close {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   font-size: 0.7rem;
-  cursor: pointer;
   padding: 0;
   line-height: 1;
-  transition: color 0.2s;
+  transition: color 0.15s;
 }
-.close:hover { color: #fff; }
+.close:hover { color: var(--navy); }
 
 @media (max-width: 480px) {
   .btn {

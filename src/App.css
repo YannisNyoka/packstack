@@ -3,13 +3,13 @@
 }
 
 ::selection {
-  background: rgba(79, 255, 224, 0.25);
-  color: #fff;
+  background: rgba(47, 111, 237, 0.15);
+  color: var(--navy);
 }
 
 ::-moz-selection {
-  background: rgba(79, 255, 224, 0.25);
-  color: #fff;
+  background: rgba(47, 111, 237, 0.15);
+  color: var(--navy);
 }
 
 /* Smooth focus states for accessibility */
@@ -18,6 +18,6 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid rgba(79, 255, 224, 0.5);
+  outline: 2px solid var(--blue);
   outline-offset: 2px;
 }

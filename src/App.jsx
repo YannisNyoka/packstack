@@ -1,32 +1,46 @@
-import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home'
-import Loader from './components/Loader/Loader'
+import SalonBooking from './pages/SalonBooking'
 import BackToTop from './components/BackToTop/BackToTop'
 import WhatsApp from './components/WhatsApp/WhatsApp'
-import CursorGlow from './components/CursorGlow/CursorGlow'
 import CookieBanner from './components/CookieBanner/CookieBanner'
-import SoundToggle from './components/SoundToggle/SoundToggle'
 import './App.css'
 
-function App() {
-  const [loading, setLoading] = useState(true)
+// Every page navigation in this app either lands at the top or at an anchor
+// within that page's own sections (e.g. Footer/Navbar links to
+// "/salon-booking#pricing"). React Router doesn't scroll to hashes on its
+// own, so this does it after the target page has mounted.
+function ScrollToHash() {
+  const location = useLocation()
 
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash)
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50)
+        return
+      }
+    }
+    window.scrollTo(0, 0)
+  }, [location])
+
+  return null
+}
+
+function App() {
   return (
     <>
-      <CursorGlow />
-      {loading && <Loader onComplete={() => setLoading(false)} />}
-      <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.5s ease' }}>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <BackToTop />
-        <WhatsApp />
-        <SoundToggle />
-        <CookieBanner />
-      </div>
+      <Navbar />
+      <ScrollToHash />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/salon-booking" element={<SalonBooking />} />
+      </Routes>
+      <BackToTop />
+      <WhatsApp />
+      <CookieBanner />
     </>
   )
 }
