@@ -63,7 +63,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button className={styles.cta} onClick={() => handleNav({ path: null, hash: '#contact' })}>
+        <button className={styles.cta} onClick={() => { setMenuOpen(false); navigate('/signup') }}>
           Get Started
         </button>
 
@@ -93,7 +93,7 @@ export default function Navbar() {
           ))}
           <button
             className={styles.mobileCta}
-            onClick={() => handleNav({ path: null, hash: '#contact' })}
+            onClick={() => { setMenuOpen(false); navigate('/signup') }}
           >
             Get Started
           </button>

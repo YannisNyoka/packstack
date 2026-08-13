@@ -1,0 +1,84 @@
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 8rem 6% 5rem;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.updated {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.disclaimer {
+  background: var(--blue-light);
+  border: 1px solid #d4e0fb;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.88rem;
+  color: var(--blue-dark);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 2.2rem 0 0.8rem;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 1.4rem 0 0.5rem;
+}
+
+.prose p {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 0.9rem;
+}
+
+.prose ul {
+  margin: 0 0 0.9rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.prose li {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.prose a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.prose strong {
+  color: var(--navy);
+}
+
+@media (max-width: 480px) {
+  .page { padding: 7rem 6% 4rem; }
+}

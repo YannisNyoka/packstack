@@ -120,8 +120,8 @@ export default function Footer() {
       <div className={styles.bottom}>
         <p>© {new Date().getFullYear()} PackStack. All rights reserved.</p>
         <div className={styles.bottomLinks}>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
         </div>
       </div>
     </footer>

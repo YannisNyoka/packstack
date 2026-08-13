@@ -1,6 +1,8 @@
 import { Check } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import styles from './Hero.module.css'
 import Droplet from '../Droplet/Droplet'
+import HeroMockup from '../HeroMockup/HeroMockup'
 
 const capabilities = [
   'Real-time online booking',
@@ -10,6 +12,8 @@ const capabilities = [
 ]
 
 export default function Hero() {
+  const navigate = useNavigate()
+
   const handleNav = (href) => {
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -17,41 +21,49 @@ export default function Hero() {
 
   return (
     <section className={styles.hero} id="home">
-      <Droplet threshold={0.05}>
-        <div className={styles.eyebrow}>Booking Software for Service Businesses</div>
-      </Droplet>
+      <div className={styles.inner}>
+        <div className={styles.textCol}>
+          <Droplet threshold={0.05}>
+            <div className={styles.eyebrow}>Booking Software for Service Businesses</div>
+          </Droplet>
 
-      <Droplet delay={80} threshold={0.05}>
-        <h1 className={styles.heading}>
-          Everything your salon needs<br />
-          to <mark className={styles.highlight}>take bookings online.</mark>
-        </h1>
-      </Droplet>
+          <Droplet delay={80} threshold={0.05}>
+            <h1 className={styles.heading}>
+              Everything your salon needs<br />
+              to <mark className={styles.highlight}>take bookings online.</mark>
+            </h1>
+          </Droplet>
 
-      <Droplet delay={120} threshold={0.05}>
-        <p className={styles.cursive}>
-          Simple to set up. <span className={styles.wavy}>Easy</span> to run.
-        </p>
-      </Droplet>
+          <Droplet delay={120} threshold={0.05}>
+            <p className={styles.cursive}>
+              Simple to set up. <span className={styles.wavy}>Easy</span> to run.
+            </p>
+          </Droplet>
 
-      <Droplet delay={160} threshold={0.05}>
-        <p className={styles.sub}>
-          Booking Appointment is PackStack's app for South African service businesses —
-          real-time online booking, staff scheduling, automatic confirmations and loyalty
-          rewards, starting with salons.
-        </p>
-      </Droplet>
+          <Droplet delay={160} threshold={0.05}>
+            <p className={styles.sub}>
+              Booking Appointment is PackStack's app for South African service businesses —
+              real-time online booking, staff scheduling, automatic confirmations and loyalty
+              rewards, starting with salons.
+            </p>
+          </Droplet>
 
-      <Droplet delay={240} threshold={0.05}>
-        <div className={styles.buttons}>
-          <button className={styles.btnPrimary} onClick={() => handleNav('#contact')}>
-            Get Started
-          </button>
-          <button className={styles.btnSecondary} onClick={() => handleNav('#pricing')}>
-            See Pricing
-          </button>
+          <Droplet delay={240} threshold={0.05}>
+            <div className={styles.buttons}>
+              <button className={styles.btnPrimary} onClick={() => navigate('/signup')}>
+                Start Free Trial
+              </button>
+              <button className={styles.btnSecondary} onClick={() => handleNav('#contact')}>
+                Book a Demo
+              </button>
+            </div>
+          </Droplet>
         </div>
-      </Droplet>
+
+        <Droplet delay={200} threshold={0.05} className={styles.visualCol}>
+          <HeroMockup />
+        </Droplet>
+      </div>
 
       <Droplet delay={320} threshold={0.05}>
         <div className={styles.capabilities}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Lightbulb, Check } from 'lucide-react'
 import styles from './Pricing.module.css'
 import Droplet from '../Droplet/Droplet'
@@ -30,6 +31,7 @@ function featuresFor(plan) {
 }
 
 export default function Pricing() {
+  const navigate = useNavigate()
   const [status, setStatus] = useState('loading') // loading | ready | empty | error
   const [plans, setPlans] = useState([])
 
@@ -126,8 +128,8 @@ export default function Pricing() {
                     ))}
                   </ul>
 
-                  <button className={`${styles.cta} ${styles.ctaPrimary}`} onClick={handleNav}>
-                    Get Started
+                  <button className={`${styles.cta} ${styles.ctaPrimary}`} onClick={() => navigate(`/signup?plan=${p.key}`)}>
+                    Start Free Trial
                   </button>
                 </div>
               </Droplet>

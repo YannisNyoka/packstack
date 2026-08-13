@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Cookie } from 'lucide-react'
+import { loadAnalyticsIfConsented } from '../../lib/analytics'
 import styles from './CookieBanner.module.css'
 
 export default function CookieBanner() {
@@ -9,11 +11,14 @@ export default function CookieBanner() {
     const consent = localStorage.getItem('packstack_cookie_consent')
     if (!consent) {
       setTimeout(() => setVisible(true), 2000)
+    } else if (consent === 'accepted') {
+      loadAnalyticsIfConsented()
     }
   }, [])
 
   const accept = () => {
     localStorage.setItem('packstack_cookie_consent', 'accepted')
+    loadAnalyticsIfConsented()
     setVisible(false)
   }
 
@@ -35,7 +40,7 @@ export default function CookieBanner() {
           <p className={styles.desc}>
             We use cookies to improve your experience and analyse site traffic.
             By clicking "Accept" you consent to our use of cookies.{' '}
-            <a href="#" className={styles.link}>Learn more</a>
+            <Link to="/privacy" className={styles.link}>Learn more</Link>
           </p>
         </div>
       </div>

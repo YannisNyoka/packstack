@@ -3,6 +3,9 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home'
 import SalonBooking from './pages/SalonBooking'
+import Signup from './pages/Signup'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 import BackToTop from './components/BackToTop/BackToTop'
 import WhatsApp from './components/WhatsApp/WhatsApp'
 import CookieBanner from './components/CookieBanner/CookieBanner'
@@ -37,6 +40,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/salon-booking" element={<SalonBooking />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
       <BackToTop />
       <WhatsApp />

@@ -6,7 +6,7 @@ import Droplet from '../Droplet/Droplet'
 const faqs = [
   {
     q: 'Is there a free trial?',
-    a: 'Yes — every new business starts on a free trial, no card required upfront. You only need to add billing once you\'re ready to go live.',
+    a: 'Yes — every new business gets a full month of free access to the entire system, no card required upfront. After that it\'s R199/month.',
   },
   {
     q: 'Do I need any technical skills to set this up?',
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: 'Can I use my own domain instead of a packstack.co.za subdomain?',
-    a: 'Yes, on the Growth and Enterprise plans — point your existing domain at your booking page once it\'s verified.',
+    a: 'Yes — point your existing domain at your booking page once it\'s verified, included on the plan.',
   },
   {
     q: "What if my business isn't a salon?",
