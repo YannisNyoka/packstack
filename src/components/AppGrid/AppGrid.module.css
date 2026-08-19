@@ -115,6 +115,10 @@ a.card:hover {
   border-radius: 100px;
 }
 
+@media (max-width: 768px) {
+  .section { padding: 4rem 5% 4.5rem; }
+}
+
 @media (max-width: 480px) {
-  .section { padding: 4rem 5% 5rem; }
+  .section { padding: 3rem 5% 3.5rem; }
 }

@@ -100,8 +100,12 @@
   line-height: 1.75;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .section { padding: 4rem 5%; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 3rem 5%; }
   .question { padding: 1.1rem 1.2rem; font-size: 0.92rem; }
   .answer { padding: 0 1.2rem; }
   .answerOpen { padding: 0 1.2rem 1.2rem; }

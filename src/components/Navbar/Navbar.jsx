@@ -4,9 +4,11 @@ import { X } from 'lucide-react'
 import styles from './Navbar.module.css'
 
 const links = [
-  { label: 'Salon Booking', path: '/salon-booking' },
-  { label: 'Custom Work', path: '/', hash: '#portfolio' },
-  { label: 'Contact', path: null, hash: '#contact' }, // stays on whichever page you're on
+  { label: 'About Us', path: '/about' },
+  { label: 'Products', path: '/salon-booking' },
+  { label: 'Pricing', path: '/salon-booking', hash: '#pricing' },
+  { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Contact Us', path: '/', hash: '#contact' },
 ]
 
 export default function Navbar() {

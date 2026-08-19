@@ -196,11 +196,11 @@
     max-width: 480px;
     margin: 0 auto;
   }
-  .section { padding: 5rem 5%; }
+  .section { padding: 4.5rem 5%; }
 }
 
 @media (max-width: 480px) {
-  .section { padding: 4rem 5%; }
+  .section { padding: 3rem 5%; }
   .card { padding: 2rem 1.5rem; }
   .price { font-size: 2rem; }
   .disclaimer {

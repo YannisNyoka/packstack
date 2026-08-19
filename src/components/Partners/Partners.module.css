@@ -61,3 +61,8 @@
   border-color: var(--blue);
   color: var(--blue);
 }
+
+@media (max-width: 768px) {
+  .section { padding: 2.5rem 0; }
+  .header { margin-bottom: 1.5rem; }
+}

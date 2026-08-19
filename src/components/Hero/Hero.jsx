@@ -1,80 +1,87 @@
-import { Check } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Hero.module.css'
 import Droplet from '../Droplet/Droplet'
-import HeroMockup from '../HeroMockup/HeroMockup'
 
-const capabilities = [
-  'Real-time online booking',
-  'WhatsApp & email confirmations',
-  'Deposits via Yoco',
-  'Your own custom domain',
+// One representative clip per major service category PackStack's booking
+// app can serve - not just salons. Loaded one at a time (not preloaded
+// together) so the page never fetches more than one multi-MB clip at once.
+const slides = [
+  '/hero-videos/hair.mp4',
+  '/hero-videos/nails.mp4',
+  '/hero-videos/skincare.mp4',
+  '/hero-videos/makeup.mp4',
+  '/hero-videos/massage.mp4',
 ]
+
+const SLIDE_DURATION_MS = 7000
+
+// Autoplaying video is motion some visitors have explicitly opted out of -
+// skip it entirely for them rather than just hiding the controls, falling
+// back to the plain navy background.
+const prefersReducedMotion =
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export default function Hero() {
   const navigate = useNavigate()
+  const videoRef = useRef(null)
+  const [slideIndex, setSlideIndex] = useState(0)
+  const [videoReady, setVideoReady] = useState(false)
 
-  const handleNav = (href) => {
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    const id = setInterval(() => {
+      setVideoReady(false)
+      setSlideIndex((i) => (i + 1) % slides.length)
+    }, SLIDE_DURATION_MS)
+    return () => clearInterval(id)
+  }, [])
+
+  useEffect(() => {
+    if (prefersReducedMotion || !videoRef.current) return
+    videoRef.current.load()
+    videoRef.current.play().catch(() => {})
+  }, [slideIndex])
 
   return (
     <section className={styles.hero} id="home">
-      <div className={styles.inner}>
-        <div className={styles.textCol}>
-          <Droplet threshold={0.05}>
-            <div className={styles.eyebrow}>Booking Software for Service Businesses</div>
-          </Droplet>
+      {!prefersReducedMotion && (
+        <video
+          ref={videoRef}
+          className={`${styles.bgVideo} ${videoReady ? styles.bgVideoReady : ''}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onCanPlay={() => setVideoReady(true)}
+          aria-hidden="true"
+        >
+          <source src={slides[slideIndex]} type="video/mp4" />
+        </video>
+      )}
+      <div className={styles.overlay} aria-hidden="true" />
+      <div className={styles.content}>
+        <Droplet threshold={0.05}>
+          <h1 className={styles.heading}>
+            Everything your salon needs<br />
+            to <span className={styles.highlight}>take bookings online.</span>
+          </h1>
+        </Droplet>
 
-          <Droplet delay={80} threshold={0.05}>
-            <h1 className={styles.heading}>
-              Everything your salon needs<br />
-              to <mark className={styles.highlight}>take bookings online.</mark>
-            </h1>
-          </Droplet>
+        <Droplet delay={120} threshold={0.05}>
+          <p className={styles.tagline}>
+            Simple to set up. Easy to run.
+          </p>
+        </Droplet>
 
-          <Droplet delay={120} threshold={0.05}>
-            <p className={styles.cursive}>
-              Simple to set up. <span className={styles.wavy}>Easy</span> to run.
-            </p>
-          </Droplet>
-
-          <Droplet delay={160} threshold={0.05}>
-            <p className={styles.sub}>
-              Booking Appointment is PackStack's app for South African service businesses —
-              real-time online booking, staff scheduling, automatic confirmations and loyalty
-              rewards, starting with salons.
-            </p>
-          </Droplet>
-
-          <Droplet delay={240} threshold={0.05}>
-            <div className={styles.buttons}>
-              <button className={styles.btnPrimary} onClick={() => navigate('/signup')}>
-                Start Free Trial
-              </button>
-              <button className={styles.btnSecondary} onClick={() => handleNav('#contact')}>
-                Book a Demo
-              </button>
-            </div>
-          </Droplet>
-        </div>
-
-        <Droplet delay={200} threshold={0.05} className={styles.visualCol}>
-          <HeroMockup />
+        <Droplet delay={240} threshold={0.05}>
+          <div className={styles.buttons}>
+            <button className={styles.btnPrimary} onClick={() => navigate('/signup')}>
+              Start Free Trial
+            </button>
+          </div>
         </Droplet>
       </div>
-
-      <Droplet delay={320} threshold={0.05}>
-        <div className={styles.capabilities}>
-          {capabilities.map((c) => (
-            <div key={c} className={styles.capabilityItem}>
-              <Check size={15} strokeWidth={2.5} className={styles.capabilityCheck} />
-              {c}
-            </div>
-          ))}
-        </div>
-      </Droplet>
     </section>
   )
 }

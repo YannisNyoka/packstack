@@ -3,6 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home'
 import SalonBooking from './pages/SalonBooking'
+import About from './pages/About'
+import Portfolio from './pages/Portfolio'
 import Signup from './pages/Signup'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
@@ -40,6 +42,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/salon-booking" element={<SalonBooking />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
