@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Calendar } from 'lucide-react'
 import styles from './Contact.module.css'
+
+const DEMO_BOOKING_URL = 'https://outlook.office.com/book/packstack36gmailcom@mylife.unisa.ac.za/'
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -53,7 +55,20 @@ export default function Contact() {
             <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
           </div>
         ) : (
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <>
+            <div className={styles.demoCta}>
+              <a href={DEMO_BOOKING_URL} target="_blank" rel="noopener noreferrer" className={styles.demoBtn}>
+                <Calendar size={18} strokeWidth={2} />
+                Book a Demo Call
+              </a>
+              <span className={styles.demoNote}>Pick a time that works for you — no forms, no waiting.</span>
+            </div>
+
+            <div className={styles.divider}>
+              <span>or send us a message</span>
+            </div>
+
+            <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.row}>
               <div className={styles.field}>
                 <label className={styles.fieldLabel}>Full Name</label>
@@ -130,7 +145,8 @@ export default function Contact() {
             <p className={styles.note}>
               No commitment. No spam. Just a conversation.
             </p>
-          </form>
+            </form>
+          </>
         )}
       </div>
     </section>
