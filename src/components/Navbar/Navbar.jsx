@@ -4,11 +4,11 @@ import { X } from 'lucide-react'
 import styles from './Navbar.module.css'
 
 const links = [
-  { label: 'About Us', path: '/about' },
   { label: 'Products', path: '/salon-booking' },
   { label: 'Pricing', path: '/salon-booking', hash: '#pricing' },
   { label: 'Portfolio', path: '/portfolio' },
   { label: 'Contact Us', path: '/', hash: '#contact' },
+  { label: 'About Us', path: '/about' },
 ]
 
 export default function Navbar() {

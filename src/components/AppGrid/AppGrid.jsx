@@ -16,17 +16,6 @@ const apps = [
 export default function AppGrid() {
   return (
     <section className={styles.section} id="apps">
-      <Droplet>
-        <div className={styles.header}>
-          <div className={styles.label}>The Apps</div>
-          <h2 className={styles.title}>One Platform, Built to Grow App by App</h2>
-          <p className={styles.sub}>
-            Each app is a standalone tool for a specific part of your business — start with the
-            one you need today.
-          </p>
-        </div>
-      </Droplet>
-
       <div className={styles.grid}>
         {apps.map((app, i) => (
           <Droplet key={app.name} delay={i * 100}>
