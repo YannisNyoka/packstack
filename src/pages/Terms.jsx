@@ -1,8 +1,15 @@
 import LegalPage from '../components/LegalPage/LegalPage'
+import { useSEO } from '../hooks/useSEO'
 
 export default function Terms() {
+  useSEO({
+    title: 'Terms of Service',
+    description: 'The terms governing your use of the PackStack platform and any custom digital work PackStack takes on.',
+    path: '/terms',
+  })
+
   return (
-    <LegalPage title="Terms of Service" lastUpdated="8 August 2026">
+    <LegalPage title="Terms of Service" lastUpdated="26 August 2026">
       <p>
         These terms govern your use of PackStack's software platform (currently the Booking
         Appointment app, with more apps planned) and, separately, any custom digital work
@@ -14,8 +21,8 @@ export default function Terms() {
       <p>
         PackStack is a multi-tenant business software platform. Today it includes Booking
         Appointment - online booking, staff scheduling, customer and loyalty management,
-        deposit payments, and related tools for service businesses. There's no self-serve
-        signup yet; accounts ("tenants") are provisioned by us directly.
+        deposit payments, and related tools for service businesses. You can sign up for an
+        account ("tenant") yourself at any time, or we can set one up for you directly.
       </p>
       <p>
         Custom digital work - bespoke web development, app development, SEO, or social media

@@ -34,9 +34,17 @@ export default function Pricing() {
   const navigate = useNavigate()
   const [status, setStatus] = useState('loading') // loading | ready | empty | error
   const [plans, setPlans] = useState([])
+  const [slow, setSlow] = useState(false)
 
   useEffect(() => {
     let cancelled = false
+    // The API can be a few seconds slow to respond right after being idle -
+    // rather than leave a bare spinner up the whole time, say so once it's
+    // taken long enough that a visitor would otherwise assume it's stuck.
+    const slowTimer = setTimeout(() => {
+      if (!cancelled) setSlow(true)
+    }, 3000)
+
     getPlans()
       .then((data) => {
         if (cancelled) return
@@ -49,6 +57,7 @@ export default function Pricing() {
       })
     return () => {
       cancelled = true
+      clearTimeout(slowTimer)
     }
   }, [])
 
@@ -76,7 +85,9 @@ export default function Pricing() {
       {status === 'loading' && (
         <div className={styles.statusPanel}>
           <div className={styles.spinner} />
-          <p className={styles.statusText}>Loading pricing…</p>
+          <p className={styles.statusText}>
+            {slow ? "Waking up the server — this can take a few seconds…" : 'Loading pricing…'}
+          </p>
         </div>
       )}
 

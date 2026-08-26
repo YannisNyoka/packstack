@@ -3,6 +3,7 @@ import styles from './About.module.css'
 import Droplet from '../components/Droplet/Droplet'
 import Contact from '../components/Contact/Contact'
 import Footer from '../components/Footer/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const localFit = [
   {
@@ -28,6 +29,13 @@ const localFit = [
 ]
 
 export default function About() {
+  useSEO({
+    title: 'About Us',
+    description:
+      'PackStack builds business software for South African service companies — WhatsApp-first, local payment rails, and POPIA-aware by design. Meet the team behind Booking Appointment.',
+    path: '/about',
+  })
+
   return (
     <main>
       <section className={styles.header}>

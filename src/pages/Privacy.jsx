@@ -1,6 +1,13 @@
 import LegalPage from '../components/LegalPage/LegalPage'
+import { useSEO } from '../hooks/useSEO'
 
 export default function Privacy() {
+  useSEO({
+    title: 'Privacy Policy',
+    description: 'How PackStack collects, uses, and protects personal information for marketing site visitors, tenant businesses, and their end customers, in line with POPIA.',
+    path: '/privacy',
+  })
+
   return (
     <LegalPage title="Privacy Policy" lastUpdated="8 August 2026">
       <p>

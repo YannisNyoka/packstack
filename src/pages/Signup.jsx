@@ -4,6 +4,7 @@ import { Check, Loader2 } from 'lucide-react'
 import styles from './Signup.module.css'
 import { getPlans } from '../api/plans'
 import { signup, createCheckout, SignupError } from '../api/signup'
+import { useSEO } from '../hooks/useSEO'
 
 function formatPrice(plan) {
   const amount = `R${plan.priceZAR.toLocaleString('en-ZA')}`
@@ -37,6 +38,12 @@ function redirectToPayfast(checkoutUrl, fields) {
 }
 
 export default function Signup() {
+  useSEO({
+    title: 'Start Your Free Trial',
+    description: 'Set up your salon on PackStack — pick a plan, tell us about your business, and start taking bookings online. No card required for your first month.',
+    path: '/signup',
+  })
+
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const preselectedPlanKey = searchParams.get('plan')
