@@ -6,7 +6,7 @@ import Droplet from '../Droplet/Droplet'
 const faqs = [
   {
     q: 'Is there a free trial?',
-    a: 'Yes — every new business gets a full month of free access to the entire system, no card required upfront. After that it\'s R199/month.',
+    a: 'Yes — every new business gets 14 days of free access to the entire system. You\'ll add your card when you sign up, but you won\'t be charged a cent until the trial ends, and you can cancel anytime before then. After that it\'s R99/month.',
   },
   {
     q: 'Do I need any technical skills to set this up?',

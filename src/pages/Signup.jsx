@@ -40,7 +40,7 @@ function redirectToPayfast(checkoutUrl, fields) {
 export default function Signup() {
   useSEO({
     title: 'Start Your Free Trial',
-    description: 'Set up your salon on PackStack — pick a plan, tell us about your business, and start taking bookings online. No card required for your first month.',
+    description: 'Set up your salon on PackStack — pick a plan, tell us about your business, and start taking bookings online. Add your card once, pay nothing for 14 days.',
     path: '/signup',
   })
 
@@ -263,7 +263,7 @@ export default function Signup() {
 
             <p className={styles.trialNote}>
               You'll enter your card details on the next step to secure your plan, but you won't be charged until
-              your 30-day free trial ends. Cancel anytime before then from your dashboard and you'll never be billed.
+              your 14-day free trial ends. Cancel anytime before then from your dashboard and you'll never be billed.
             </p>
 
             {fieldError && <p className={styles.errorMsg}>{fieldError}</p>}

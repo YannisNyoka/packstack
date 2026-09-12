@@ -41,11 +41,17 @@ export default function Terms() {
       <h2>3. Subscriptions and billing</h2>
       <ul>
         <li>
-          New tenants get one month of free access to the entire system, no card required
-          upfront. If you haven't subscribed by the end of that month, your account is
-          suspended in the same way described below for non-payment, until you subscribe.
+          New tenants get 14 days of free access to the entire system. You'll add your card
+          details (processed by PayFast) when you sign up, but you won't be charged during the
+          trial - your subscription is billed automatically once the 14 days end, unless you
+          cancel before then.
         </li>
-        <li>After the trial, subscription fees are billed monthly and processed by PayFast.</li>
+        <li>
+          If you cancel during the trial, no charge is ever made, but your account is suspended
+          at the end of the 14 days in the same way described below for non-payment, until you
+          subscribe again.
+        </li>
+        <li>After the trial converts to a paid subscription, fees are billed monthly and processed by PayFast.</li>
         <li>
           If a payment fails, your account enters a grace period during which the dashboard
           keeps working but shows a payment-due notice. If it isn't resolved within that grace
