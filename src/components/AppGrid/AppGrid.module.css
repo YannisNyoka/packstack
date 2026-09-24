@@ -73,14 +73,25 @@ a.card:hover {
   border: 1px solid var(--border);
 }
 
-.iconImage {
-  background: none;
+.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1.25rem;
+  transition: transform 0.2s;
 }
 
-.iconImage img {
-  width: 40px;
-  height: 40px;
+.featured:hover {
+  transform: translateY(-4px);
+}
+
+.featuredLogo {
+  width: 96px;
+  height: 96px;
   object-fit: contain;
+  margin-bottom: 0.4rem;
 }
 
 .cardTitle {

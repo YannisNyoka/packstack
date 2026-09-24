@@ -19,10 +19,8 @@ export default function AppGrid() {
       <div className={styles.grid}>
         {apps.map((app, i) => (
           <Droplet key={app.name} delay={i * 100}>
-            <Link to={app.to} className={styles.card}>
-              <div className={`${styles.icon} ${styles.iconImage}`}>
-                <img src={app.iconSrc} alt="" width={40} height={40} />
-              </div>
+            <Link to={app.to} className={styles.featured}>
+              <img src={app.iconSrc} alt="" className={styles.featuredLogo} />
               <h3 className={styles.cardTitle}>{app.name}</h3>
               <p className={styles.cardDesc}>{app.desc}</p>
               <span className={styles.openLink}>Open app →</span>
