@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { CalendarCheck, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import styles from './AppGrid.module.css'
 import Droplet from '../Droplet/Droplet'
 
 const apps = [
   {
-    icon: CalendarCheck,
+    iconSrc: '/app-icon-booking.png',
     name: 'Booking Appointment',
     desc: 'Online booking, staff scheduling, deposits and loyalty for salons and service businesses.',
     to: '/salon-booking',
@@ -20,8 +20,8 @@ export default function AppGrid() {
         {apps.map((app, i) => (
           <Droplet key={app.name} delay={i * 100}>
             <Link to={app.to} className={styles.card}>
-              <div className={styles.icon}>
-                <app.icon size={26} strokeWidth={2} color="var(--blue)" />
+              <div className={`${styles.icon} ${styles.iconImage}`}>
+                <img src={app.iconSrc} alt="" width={40} height={40} />
               </div>
               <h3 className={styles.cardTitle}>{app.name}</h3>
               <p className={styles.cardDesc}>{app.desc}</p>
