@@ -36,95 +36,83 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem 1.5rem;
 }
 
-.card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-
-a.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--blue);
-  box-shadow: var(--shadow-hover);
-}
-
-.icon {
-  width: 52px;
-  height: 52px;
-  background: var(--blue-light);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.6rem;
-}
-
-.cardSoon .icon {
-  background: #fff;
-  border: 1px solid var(--border);
-}
-
-.featured {
+/* Odoo-style app grid: a square icon tile, with the name/description/status
+   living below it as plain caption text rather than inside a bordered card -
+   see AppGrid.jsx's own note on why the description stays (unlike Odoo's own
+   internal app switcher, this is a marketing site - a visitor who doesn't
+   already know the product needs that sentence). */
+.tile {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.6rem;
-  padding: 1.5rem 1.25rem;
+  gap: 0.5rem;
   transition: transform 0.2s;
 }
 
-.featured:hover {
+a.tile:hover {
   transform: translateY(-4px);
 }
 
-.featuredLogo {
+.iconBox {
   width: 96px;
   height: 96px;
-  object-fit: contain;
-  margin-bottom: 0.4rem;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 2px 14px rgba(15, 27, 45, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: box-shadow 0.2s;
 }
 
-.cardTitle {
-  font-size: 1.1rem;
+a.tile:hover .iconBox {
+  box-shadow: var(--shadow-hover);
+}
+
+.iconImg {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.tileSoon .iconBox {
+  background: var(--bg-alt);
+  border: 1px dashed var(--border);
+  box-shadow: none;
+}
+
+.tileTitle {
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--navy);
 }
 
-.cardDesc {
-  font-size: 0.9rem;
+.tileSoon .tileTitle,
+.tileSoon .tileDesc {
   color: var(--text-muted);
-  line-height: 1.6;
-  flex: 1;
+}
+
+.tileDesc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 22ch;
 }
 
 .openLink {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--blue);
-}
-
-.cardSoon {
-  background: var(--bg-alt);
-  border-style: dashed;
-}
-
-.cardSoon .cardTitle,
-.cardSoon .cardDesc {
-  color: var(--text-muted);
+  margin-top: 0.2rem;
 }
 
 .soonBadge {
-  align-self: flex-start;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -134,6 +122,7 @@ a.card:hover {
   border: 1px solid var(--border);
   padding: 0.3rem 0.7rem;
   border-radius: 100px;
+  margin-top: 0.2rem;
 }
 
 @media (max-width: 768px) {
