@@ -15,15 +15,15 @@ function featuresFor(plan) {
   const { limits } = plan
   const list = [
     limits.maxStaff === 1 ? '1 staff member' : `Up to ${limits.maxStaff} staff members`,
-    `${limits.maxAppointmentsPerMonth.toLocaleString('en-ZA')} appointments / month`,
+    limits.maxAppointmentsPerMonth === null
+      ? 'Unlimited appointments'
+      : `${limits.maxAppointmentsPerMonth.toLocaleString('en-ZA')} appointments / month`,
     'Online booking page',
     'Staff scheduling',
     'Email confirmations',
     'Loyalty points',
+    'Unlimited in-app messaging',
   ]
-  if (limits.whatsappMessagesPerMonth > 0) {
-    list.push(`${limits.whatsappMessagesPerMonth.toLocaleString('en-ZA')} WhatsApp messages / month`)
-  }
   if (limits.customDomainAllowed) {
     list.push('Your own custom domain')
   }
