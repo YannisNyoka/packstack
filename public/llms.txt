@@ -1,0 +1,55 @@
+# PackStack
+
+> PackStack is a growing platform of business apps for South African companies. The first app, Booking Appointment, is real-time online booking software for salons and service businesses.
+
+## Product
+
+PackStack's first app, "Booking Appointment", provides:
+- Online booking: customers book 24/7 from a public page showing real, live availability - no login required, no back-and-forth messaging.
+- Staff scheduling: working hours, one-off time off, conflict-free appointment slots.
+- Payments and deposits: optional deposit collection at booking time via Yoco (a South African payment provider).
+- Customers and loyalty: booking history per customer plus an automatic loyalty points system, with WhatsApp and email confirmations.
+- Custom domains: a business can point its own domain at its booking page instead of using a packstack.co.za subdomain.
+
+More apps for other business types are on PackStack's roadmap - the platform is built one app at a time.
+
+## Pricing
+
+Pricing is in South African Rand (ZAR), billed monthly, no per-booking fees. Every new business gets a 14-day free trial of the full system before being charged.
+
+- Starter: R99/month - up to 2 staff members, 500 appointments/month.
+- Recommended: R199/month - up to 10 staff members, 1,000 appointments/month.
+- Premium: R399/month - up to 50 staff members, 10,000 appointments/month.
+
+All plans include online booking, staff scheduling, email confirmations, loyalty points, unlimited in-app messaging, and a custom domain.
+
+## Frequently Asked Questions
+
+Q: Is there a free trial?
+A: Yes - every new business gets 14 days of free access to the entire system. A card is added at signup but not charged until the trial ends, and it can be cancelled anytime before then. After the trial it's R99/month on the Starter plan.
+
+Q: Do I need any technical skills to set this up?
+A: No. PackStack provisions the account and loads in services, staff and working hours - a ready-to-use booking page and dashboard are available from day one.
+
+Q: Can customers pay a deposit when they book?
+A: If the business connects Yoco, yes - a deposit can be required at booking time. It is optional and off by default.
+
+Q: Do customers need to create an account to book?
+A: No. Customers book from a public page with no login, and manage their own booking (reschedule or cancel) via a secure link sent over WhatsApp or email.
+
+Q: Can a business use its own domain instead of a packstack.co.za subdomain?
+A: Yes - a verified custom domain can be pointed at the booking page, included on every plan.
+
+Q: What if the business isn't a salon?
+A: The platform is currently built around salon-style service businesses (bookings, staff, services). More business types are on the roadmap.
+
+Q: Does PackStack also build custom digital work?
+A: Yes - outside the platform itself, the PackStack team takes on bespoke web, app, SEO and social media projects.
+
+Q: Does PackStack work with clients outside South Africa?
+A: For custom project work, yes - clients across Africa, Europe and beyond. The PackStack platform itself is priced in ZAR for South African businesses.
+
+## Contact
+
+Website: https://packstack.co.za
+Sign up: https://packstack.co.za/signup
