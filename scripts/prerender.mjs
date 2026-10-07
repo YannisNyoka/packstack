@@ -10,17 +10,42 @@
 // Only correct as long as every one of these routes is fully static (no
 // per-visitor or runtime-dynamic content) - re-check this list if a route
 // ever gains that.
-import { chromium } from 'playwright';
+import { chromium } from 'playwright-core';
 import { preview } from 'vite';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-const ROUTES = ['/', '/salon-booking', '/about', '/portfolio', '/signup', '/privacy', '/terms'];
+const ROUTES = ['/', '/salon-booking', '/about', '/portfolio', '/signup', '/app', '/privacy', '/terms'];
 const PORT = 4173;
+
+/**
+ * Vercel's build image is missing the system shared libraries (libnspr4.so
+ * etc.) a normal desktop-Linux Chromium needs - playwright-core's own
+ * bundled-browser download launches fine locally but crashes there
+ * ("error while loading shared libraries"), which is exactly what broke
+ * the first real deploy of this script. @sparticuz/chromium ships a
+ * statically-linked build made for exactly this (serverless/restricted
+ * Linux build containers) - used only when actually running on Vercel
+ * (VERCEL is set automatically during their builds); locally this still
+ * launches whatever Chromium is already cached for this machine's own
+ * Playwright install, same as every other Playwright-based script in this
+ * session.
+ */
+async function getLaunchOptions() {
+  if (process.env.VERCEL) {
+    const { default: sparticuzChromium } = await import('@sparticuz/chromium');
+    return {
+      args: sparticuzChromium.args,
+      executablePath: await sparticuzChromium.executablePath(),
+      headless: true,
+    };
+  }
+  return { headless: true };
+}
 
 async function main() {
   const server = await preview({ preview: { port: PORT, strictPort: true } });
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(await getLaunchOptions());
   const page = await browser.newPage();
 
   try {

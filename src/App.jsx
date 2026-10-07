@@ -6,6 +6,7 @@ import SalonBooking from './pages/SalonBooking'
 import About from './pages/About'
 import Portfolio from './pages/Portfolio'
 import Signup from './pages/Signup'
+import OpenApp from './pages/OpenApp'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import BackToTop from './components/BackToTop/BackToTop'
@@ -45,6 +46,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/app" element={<OpenApp />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>
