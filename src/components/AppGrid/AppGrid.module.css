@@ -1,134 +1,97 @@
 .section {
-  padding: 5rem 6% 6rem;
+  padding: 6rem 6%;
+  background: var(--bg-alt);
   max-width: 1180px;
-  margin: 0 auto;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 0.8rem;
-}
-
-.title {
-  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--navy);
-  margin-bottom: 1rem;
-}
-
-.sub {
-  font-size: 1.02rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 520px;
   margin: 0 auto;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 2rem 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
 }
 
-/* Odoo-style app grid: a square icon tile, with the name/description/status
-   living below it as plain caption text rather than inside a bordered card -
-   see AppGrid.jsx's own note on why the description stays (unlike Odoo's own
-   internal app switcher, this is a marketing site - a visitor who doesn't
-   already know the product needs that sentence). */
 .tile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.5rem;
-  transition: transform 0.2s;
-}
-
-a.tile:hover {
-  transform: translateY(-4px);
-}
-
-.iconBox {
-  width: 96px;
-  height: 96px;
+  align-items: flex-start;
   background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 6px 20px rgba(15, 27, 45, 0.16), 0 1px 3px rgba(15, 27, 45, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-  transition: box-shadow 0.2s;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
-a.tile:hover .iconBox {
-  box-shadow: 0 14px 32px rgba(15, 27, 45, 0.2), 0 2px 6px rgba(15, 27, 45, 0.12);
+.tile:hover {
+  border-color: #d4e0fb;
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
 }
 
-.iconImg {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-}
-
-.tileSoon .iconBox {
+.tileSoon {
   background: var(--bg-alt);
-  border: 1px dashed var(--border);
+}
+.tileSoon:hover {
+  transform: none;
   box-shadow: none;
 }
 
-.tileTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--navy);
+.iconBox {
+  width: 56px;
+  height: 56px;
+  background: var(--blue-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+  overflow: hidden;
 }
 
-.tileSoon .tileTitle,
-.tileSoon .tileDesc {
-  color: var(--text-muted);
+.iconImg {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.tileTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.6rem;
 }
 
 .tileDesc {
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
-  line-height: 1.55;
-  max-width: 22ch;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  flex: 1;
 }
 
 .openLink {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--blue);
-  margin-top: 0.2rem;
 }
 
 .soonBadge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  background: #fff;
-  border: 1px solid var(--border);
-  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
   border-radius: 100px;
-  margin-top: 0.2rem;
+  background: #fff;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  align-self: flex-start;
 }
 
 @media (max-width: 768px) {
-  .section { padding: 4rem 5% 4.5rem; }
+  .section { padding: 4rem 5%; }
 }
 
 @media (max-width: 480px) {
-  .section { padding: 3rem 5% 3.5rem; }
+  .section { padding: 3rem 5%; }
+  .grid { grid-template-columns: 1fr; }
+  .tile { padding: 1.5rem; }
 }

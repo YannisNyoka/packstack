@@ -1,128 +1,128 @@
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 640px;
   display: flex;
   align-items: center;
-  padding: 9rem 6% 5rem;
+  overflow: hidden;
+  padding: 7rem 6% 5rem;
+  background: var(--navy);
+}
+
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  background-image: url('/hero-bg.jpg');
-  background-size: cover;
-  background-position: center right;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carouselViewport {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
 }
 
+.carouselTrack {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.carouselSlide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* No media configured (or the request failed) - a plain dark gradient
+   rather than any hardcoded stock photo, so an unconfigured hero still
+   looks intentional instead of broken. */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(15, 27, 45, 0.95) 0%,
-    rgba(15, 27, 45, 0.88) 34%,
-    rgba(15, 27, 45, 0.55) 62%,
-    rgba(15, 27, 45, 0.22) 100%
-  );
-  z-index: 1;
+  background: linear-gradient(180deg, rgba(15, 27, 45, 0.88) 0%, rgba(15, 27, 45, 0.72) 45%, rgba(15, 27, 45, 0.92) 100%);
 }
 
 .content {
   position: relative;
-  z-index: 2;
-  max-width: 640px;
-  text-align: left;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.heading {
-  font-weight: 800;
-  font-size: clamp(2rem, 4.4vw, 3.2rem);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+.badge {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: #fff;
-  margin-bottom: 1.2rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  padding: 0.5rem 1.2rem;
+  margin-bottom: 1.6rem;
 }
 
-.highlight {
-  color: #7aa8ff;
-}
-
-.tagline {
-  font-weight: 500;
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.82);
-  max-width: 520px;
-  line-height: 1.6;
+.title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
   margin-bottom: 2.2rem;
 }
 
-.buttons {
-  display: flex;
-  gap: 0.9rem;
-  align-items: center;
-  flex-wrap: wrap;
+.titleAccent {
+  color: var(--blue-light);
 }
 
-.btnPrimary {
-  display: inline-block;
+.ctas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ctaPrimary {
   background: var(--blue);
   color: #fff;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.9rem 2.1rem;
+  font-size: 1rem;
+  padding: 0.95rem 1.8rem;
   border-radius: 9px;
-  border: none;
-  transition: background 0.15s, transform 0.15s;
-  white-space: nowrap;
+  transition: background 0.15s;
 }
-.btnPrimary:hover {
+.ctaPrimary:hover {
   background: var(--blue-dark);
-  transform: translateY(-1px);
 }
 
-.btnSecondary {
-  background: transparent;
+.ctaGhost {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.9rem 2.1rem;
+  font-size: 1rem;
+  padding: 0.95rem 1.8rem;
   border-radius: 9px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  transition: border-color 0.15s, background 0.15s, transform 0.15s;
-  white-space: nowrap;
+  transition: background 0.15s;
 }
-.btnSecondary:hover {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 900px) {
-  .hero { background-position: center 35%; }
-  .overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(15, 27, 45, 0.7) 0%,
-      rgba(15, 27, 45, 0.85) 55%,
-      rgba(15, 27, 45, 0.94) 100%
-    );
-  }
-  .content { max-width: 100%; }
+.ctaGhost:hover {
+  background: rgba(255, 255, 255, 0.16);
 }
 
 @media (max-width: 768px) {
-  .hero { padding: 8rem 6% 4rem; }
+  .hero { min-height: 560px; padding: 6rem 5% 4rem; }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    width: auto;
-    min-height: unset;
-    height: 56vh;
-    max-height: 520px;
-    margin: 4.5rem 1rem 1.75rem;
-    padding: 1.75rem 1.5rem;
-    border-radius: 20px;
-  }
-  .heading { font-size: 1.7rem; margin-bottom: 0.8rem; }
-  .tagline { font-size: 0.9rem; margin-bottom: 1.5rem; }
-  .buttons { flex-direction: column; align-items: stretch; }
-  .btnPrimary, .btnSecondary { width: 100%; text-align: center; padding: 0.8rem 1.5rem; }
+  .hero { padding: 5.5rem 5% 3.5rem; }
+  .ctas { flex-direction: column; align-items: stretch; }
 }
