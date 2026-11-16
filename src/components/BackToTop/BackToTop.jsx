@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ArrowUp } from 'lucide-react'
+import { IconArrowUp } from '../ui/Icons'
 import styles from './BackToTop.module.css'
 
 export default function BackToTop() {
@@ -21,7 +21,7 @@ export default function BackToTop() {
       onClick={scrollToTop}
       aria-label="Back to top"
     >
-      <ArrowUp size={18} strokeWidth={2.5} />
+      <IconArrowUp size={16} />
     </button>
   )
 }

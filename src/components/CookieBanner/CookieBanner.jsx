@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Cookie } from 'lucide-react'
 import { loadAnalyticsIfConsented } from '../../lib/analytics'
 import styles from './CookieBanner.module.css'
 
@@ -31,26 +30,14 @@ export default function CookieBanner() {
 
   return (
     <div className={styles.banner}>
-      <div className={styles.content}>
-        <div className={styles.icon}>
-          <Cookie size={22} strokeWidth={2} color="var(--blue)" />
-        </div>
-        <div className={styles.text}>
-          <p className={styles.title}>We use cookies</p>
-          <p className={styles.desc}>
-            We use cookies to improve your experience and analyse site traffic.
-            By clicking "Accept" you consent to our use of cookies.{' '}
-            <Link to="/privacy" className={styles.link}>Learn more</Link>
-          </p>
-        </div>
-      </div>
+      <p className={styles.text}>
+        We use cookies to improve your experience and analyse site traffic. By clicking
+        "Accept" you consent to our use of cookies.{' '}
+        <Link to="/privacy" className={styles.link}>Learn more</Link>
+      </p>
       <div className={styles.actions}>
-        <button className={styles.decline} onClick={decline}>
-          Decline
-        </button>
-        <button className={styles.accept} onClick={accept}>
-          Accept All
-        </button>
+        <button className={styles.decline} onClick={decline}>Decline</button>
+        <button className={styles.accept} onClick={accept}>Accept</button>
       </div>
     </div>
   )

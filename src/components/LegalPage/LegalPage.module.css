@@ -1,84 +1,84 @@
 .page {
   max-width: 780px;
   margin: 0 auto;
-  padding: 8rem 6% 5rem;
+  padding: calc(var(--space-9) + 56px) var(--gutter-mobile) var(--space-8);
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-5);
 }
 
 .title {
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--navy);
-  margin-bottom: 0.5rem;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
 }
 
 .updated {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--ink-2);
 }
 
 .disclaimer {
-  background: var(--blue-light);
-  border: 1px solid #d4e0fb;
-  border-radius: 10px;
-  padding: 1rem 1.2rem;
+  background: var(--surface);
+  border: var(--border-w) solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4) var(--space-5);
   font-size: 0.88rem;
-  color: var(--blue-dark);
+  color: var(--ink-2);
   line-height: 1.6;
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--space-8);
 }
 
 .prose h2 {
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin: 2.2rem 0 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin: var(--space-7) 0 var(--space-3);
 }
-
-.prose h2:first-child {
-  margin-top: 0;
-}
+.prose h2:first-child { margin-top: 0; }
 
 .prose h3 {
   font-size: 1.02rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin: 1.4rem 0 0.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: var(--space-5) 0 var(--space-2);
 }
 
 .prose p {
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--ink-2);
   line-height: 1.8;
-  margin-bottom: 0.9rem;
+  max-width: var(--text-measure);
+  margin-bottom: var(--space-4);
 }
 
 .prose ul {
-  margin: 0 0 0.9rem 1.3rem;
+  margin: 0 0 var(--space-4) var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--space-2);
 }
 
 .prose li {
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--ink-2);
   line-height: 1.7;
 }
 
 .prose a {
-  color: var(--blue);
+  color: var(--ink);
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
+.prose a:hover { color: var(--accent); }
 
 .prose strong {
-  color: var(--navy);
+  color: var(--ink);
 }
 
 @media (max-width: 480px) {
-  .page { padding: 7rem 6% 4rem; }
+  .page { padding: calc(var(--space-7) + 56px) var(--gutter-mobile) var(--space-6); }
 }

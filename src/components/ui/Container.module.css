@@ -1,0 +1,13 @@
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--gutter-mobile);
+  padding-right: var(--gutter-mobile);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--gutter-desktop);
+    padding-right: var(--gutter-desktop);
+  }
+}

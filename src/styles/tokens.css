@@ -1,0 +1,86 @@
+/*
+  PackStack design tokens - the editorial/Swiss-influenced studio system.
+  See DESIGN.md at the project root for the rationale behind each choice.
+
+  LEGACY BLOCK at the bottom: the SalonBooking page's hero video (Hero.jsx)
+  and the Home page's hero media carousel (PlatformHero.jsx) were both
+  deliberately left untouched during this redesign (explicit call from the
+  site owner - see conversation history). Both still read --blue, --navy,
+  --blue-light, --blue-dark, --text-muted, --border, --bg-alt, --shadow,
+  --shadow-hover and --radius from the old system. Do not remove or repurpose
+  those names for anything else; every other component in the codebase has
+  been migrated to the tokens above and no longer reads them.
+*/
+
+:root {
+  /* ---- Color ---- */
+  --paper: #f6f4ef;       /* page background */
+  --ink: #111111;          /* text, rules, primary buttons */
+  --ink-2: #55524c;        /* secondary text */
+  --line: #ddd8ce;         /* hairline borders and dividers */
+  --surface: #ffffff;      /* screenshot frames, form fields */
+  --accent: #d9480f;       /* the one accent - use sparingly */
+  --night: #141413;        /* the one dark section */
+  --night-ink-2: #a9a59c;  /* secondary text on --night */
+  --night-line: #35332e;   /* hairlines on --night */
+
+  /* ---- Spacing scale (4/8/12/16/24/32/48/64/96/128) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---- Type ---- */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-text: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-body: 1.05rem;    /* ~17px, within the 16-18px range */
+  --text-lh: 1.55;
+  --text-measure: 65ch;
+
+  /* ---- Radius / borders (4-8px max, no heavier) ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --border-w: 1px;
+
+  /* ---- Layout ---- */
+  --container-max: 1280px;
+  --gutter-mobile: 24px;
+  --gutter-desktop: 64px;
+
+  /* ---- Motion (hover/focus only, nothing scroll-triggered) ---- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-fast: 150ms;
+  --motion-slow: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-slow: 0ms;
+  }
+}
+
+/* ---- Legacy tokens - read only by Hero.jsx / PlatformHero.jsx and their
+   .module.css files. Left in place deliberately; see note above. ---- */
+:root {
+  --blue: #2f6fed;
+  --blue-dark: #1d4fc4;
+  --blue-light: #eaf1fe;
+  --navy: #0f1b2d;
+  --text: #33404f;
+  --text-muted: #6b7684;
+  --border: #e5e9f0;
+  --bg: #ffffff;
+  --bg-alt: #f7f9fc;
+  --radius: 14px;
+  --shadow: 0 2px 6px rgba(15, 27, 45, 0.04);
+  --shadow-hover: 0 12px 32px rgba(15, 27, 45, 0.08);
+}

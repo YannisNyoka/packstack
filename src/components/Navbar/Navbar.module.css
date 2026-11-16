@@ -2,61 +2,66 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 6%;
+  gap: var(--space-6);
+  padding: var(--space-4) var(--gutter-mobile);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  transition: all 0.2s;
-  background: #fff;
-  border-bottom: 1px solid transparent;
+  background: var(--paper);
+  border-bottom: var(--border-w) solid transparent;
+  transition: border-color var(--motion-slow) var(--ease);
 }
 
 .scrolled {
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 0 rgba(15, 27, 45, 0.02);
+  border-bottom-color: var(--line);
 }
 
 .logo {
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
   background: none;
   border: none;
   padding: 0;
 }
-.logo span { color: var(--blue); }
 
 .links {
   display: flex;
-  gap: 1.8rem;
+  gap: var(--space-6);
   list-style: none;
 }
 
 .navLink {
   background: none;
   border: none;
+  font-family: var(--font-text);
   font-size: 0.92rem;
   font-weight: 500;
-  color: var(--text);
-  transition: color 0.15s;
+  color: var(--ink);
   padding: 0;
+  transition: color var(--motion-fast) var(--ease);
 }
-.navLink:hover { color: var(--blue); }
+.navLink:hover { color: var(--accent); }
 
 .cta {
-  background: var(--blue);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.65rem 1.4rem;
-  border-radius: 8px;
-  border: none;
-  transition: background 0.15s;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: var(--border-w) solid var(--ink);
+  transition: background var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
 }
-.cta:hover { background: var(--blue-dark); }
+.cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
 
 .hamburger {
   display: none;
@@ -68,69 +73,62 @@
 }
 .hamburger span {
   display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--navy);
-  border-radius: 2px;
+  width: 20px;
+  height: var(--border-w);
+  background: var(--ink);
 }
 
 .mobileMenu {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 2rem;
+  gap: var(--space-5);
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: var(--paper);
   z-index: 200;
+  padding: 0 var(--gutter-mobile);
 }
 
 .close {
   position: absolute;
-  top: 1.5rem;
-  right: 6%;
+  top: var(--space-5);
+  right: var(--gutter-mobile);
   background: none;
   border: none;
-  color: var(--navy);
-  font-size: 1.5rem;
+  color: var(--ink);
 }
 
 .mobileLogo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
 }
-.mobileLogo span { color: var(--blue); }
 
 .mobileLink {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--navy);
+  font-family: var(--font-text);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
   background: none;
   border: none;
-  transition: color 0.15s;
+  padding: 0;
 }
-.mobileLink:hover { color: var(--blue); }
+.mobileLink:hover { color: var(--accent); }
 
 .mobileCta {
-  background: var(--blue);
-  color: #fff;
-  font-weight: 600;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 500;
   font-size: 1rem;
-  padding: 0.8rem 2.2rem;
-  border-radius: 8px;
-  border: none;
-  margin-top: 1rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-3);
 }
 
 @media (max-width: 900px) {
   .links, .cta { display: none; }
   .hamburger { display: flex; }
-}
-
-@media (max-width: 480px) {
-  .nav { padding: 1rem 5%; }
-  .logo { font-size: 1.15rem; }
 }

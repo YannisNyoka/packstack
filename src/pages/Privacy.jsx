@@ -1,5 +1,6 @@
 import LegalPage from '../components/LegalPage/LegalPage'
 import { useSEO } from '../hooks/useSEO'
+import { CONTACT_EMAIL } from '../lib/constants'
 
 export default function Privacy() {
   useSEO({
@@ -149,7 +150,7 @@ export default function Privacy() {
       <h2>11. Contact us</h2>
       <p>
         Questions about this policy, or want to exercise your rights above? Email{' '}
-        <a href="mailto:packstack36@gmail.com">packstack36@gmail.com</a> or call{' '}
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or call{' '}
         <a href="tel:+27782685826">+27 78 268 5826</a>. We're based in Johannesburg, South
         Africa.
       </p>

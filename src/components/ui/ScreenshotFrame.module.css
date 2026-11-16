@@ -1,0 +1,33 @@
+.frame {
+  background: var(--surface);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 0;
+}
+
+.phone {
+  max-width: 320px;
+  border-radius: 20px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: var(--border-w) solid var(--line);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: var(--border-w) solid var(--line);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

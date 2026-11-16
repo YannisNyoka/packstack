@@ -11,6 +11,8 @@ if (!uri) {
 }
 
 const RESEND_API_URL = 'https://api.resend.com/emails'
+// The real, working inbox - matches src/lib/constants.js's CONTACT_EMAIL,
+// which is what's displayed on the Footer/Contact/Privacy/Terms pages.
 const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'packstack36@gmail.com'
 // Resend's shared sandbox sender - works with no domain verification, but
 // swap CONTACT_FROM_EMAIL to something on a verified packstack.co.za domain
@@ -49,6 +51,7 @@ async function sendNotificationEmail(submission) {
         html: `
           <p><strong>Name:</strong> ${submission.name}</p>
           <p><strong>Email:</strong> ${submission.email}</p>
+          ${submission.phone ? `<p><strong>Phone:</strong> ${submission.phone}</p>` : ''}
           <p><strong>What they need:</strong> ${SERVICE_LABELS[submission.service] || submission.service}</p>
           <p><strong>Message:</strong></p>
           <p>${submission.message.replace(/\n/g, '<br>')}</p>
@@ -70,7 +73,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { name, email, service, message } = req.body
+  const { name, email, phone, service, message } = req.body
 
   if (!name || !email || !service || !message) {
     return res.status(400).json({ error: 'All fields are required.' })
@@ -84,6 +87,7 @@ export default async function handler(req, res) {
   const submission = {
     name: name.trim(),
     email: email.trim().toLowerCase(),
+    phone: phone ? phone.trim() : null,
     service,
     message: message.trim(),
     createdAt: new Date(),

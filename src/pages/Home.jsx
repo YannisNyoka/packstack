@@ -1,4 +1,5 @@
 import PlatformHero from '../components/PlatformHero/PlatformHero'
+import Proof from '../components/Proof/Proof'
 import AppGrid from '../components/AppGrid/AppGrid'
 import Contact from '../components/Contact/Contact'
 import Footer from '../components/Footer/Footer'
@@ -19,6 +20,12 @@ const HOME_JSON_LD = {
       logo: 'https://packstack.co.za/favicon.svg',
     },
     {
+      '@type': 'LocalBusiness',
+      name: 'PackStack',
+      url: 'https://packstack.co.za',
+      address: { '@type': 'PostalAddress', addressLocality: 'Johannesburg', addressCountry: 'ZA' },
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'PackStack Booking Appointment',
       applicationCategory: 'BusinessApplication',
@@ -31,9 +38,9 @@ const HOME_JSON_LD = {
 
 export default function Home() {
   useSEO({
-    title: 'Business Apps for South African Companies',
+    title: 'Booking Software for South African Service Businesses',
     description:
-      'PackStack is a growing platform of business apps for South African companies. Start with Booking Appointment — real-time online booking, staff scheduling, WhatsApp & email confirmations, loyalty rewards and deposit payments for salons.',
+      'PackStack builds and runs the systems South African salons, clinics and small businesses use every day: online booking, payments, reminders and websites. One monthly fee, local support.',
     path: '/',
     jsonLd: HOME_JSON_LD,
   })
@@ -41,6 +48,7 @@ export default function Home() {
   return (
     <main>
       <PlatformHero />
+      <Proof />
       <AppGrid />
       <Contact />
       <Footer />

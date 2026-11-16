@@ -12,7 +12,6 @@ import Terms from './pages/Terms'
 import BackToTop from './components/BackToTop/BackToTop'
 import WhatsApp from './components/WhatsApp/WhatsApp'
 import CookieBanner from './components/CookieBanner/CookieBanner'
-import './App.css'
 
 // Every page navigation in this app either lands at the top or at an anchor
 // within that page's own sections (e.g. Footer/Navbar links to
@@ -38,18 +37,21 @@ function ScrollToHash() {
 function App() {
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Navbar />
       <ScrollToHash />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/salon-booking" element={<SalonBooking />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/app" element={<OpenApp />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
-      </Routes>
+      <div id="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/salon-booking" element={<SalonBooking />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/app" element={<OpenApp />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+        </Routes>
+      </div>
       <BackToTop />
       <WhatsApp />
       <CookieBanner />

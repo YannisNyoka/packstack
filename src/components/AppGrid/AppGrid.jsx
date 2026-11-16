@@ -1,49 +1,75 @@
-import { Link } from 'react-router-dom'
-import { Sparkles } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Section } from '../ui/Section'
+import { Label } from '../ui/Label'
+import { Button } from '../ui/Button'
+import { getPlans } from '../../api/plans'
 import styles from './AppGrid.module.css'
-import Droplet from '../Droplet/Droplet'
 
-const apps = [
-  {
-    iconSrc: '/app-icon-booking.png',
-    name: 'Booking Appointment',
-    desc: 'Online booking, staff scheduling, deposits and loyalty for salons and service businesses.',
-    to: '/salon-booking',
-    live: true,
-  },
+const features = [
+  ['Online booking', 'Live availability, booked in a few taps - no back-and-forth.'],
+  ['WhatsApp & email reminders', 'Confirmations and reminders sent automatically.'],
+  ['Deposits via Yoco', 'Optional deposit at booking time, so there’s skin in the game.'],
+  ['Staff schedules', 'Working hours, time off, and conflict-free bookings.'],
+  ['Loyalty rewards', 'Points earned on completed visits, redeemed automatically.'],
+  ['Admin dashboard', 'Every booking, customer and payment in one place.'],
 ]
 
 export default function AppGrid() {
-  return (
-    <section className={styles.section} id="apps">
-      <div className={styles.grid}>
-        {apps.map((app, i) => (
-          <Droplet key={app.name} delay={i * 100}>
-            <Link to={app.to} className={styles.tile}>
-              <div className={styles.iconBox}>
-                <img src={app.iconSrc} alt="" className={styles.iconImg} />
-              </div>
-              <h3 className={styles.tileTitle}>{app.name}</h3>
-              <p className={styles.tileDesc}>{app.desc}</p>
-              <span className={styles.openLink}>Open app →</span>
-            </Link>
-          </Droplet>
-        ))}
+  const [status, setStatus] = useState('loading') // loading | ready | error
+  const [startingPrice, setStartingPrice] = useState(null)
 
-        <Droplet delay={apps.length * 100}>
-          <div className={`${styles.tile} ${styles.tileSoon}`}>
-            <div className={styles.iconBox}>
-              <Sparkles size={32} strokeWidth={2} color="var(--text-muted)" />
+  useEffect(() => {
+    let cancelled = false
+    getPlans()
+      .then((plans) => {
+        if (cancelled) return
+        if (plans.length === 0) {
+          setStatus('error')
+          return
+        }
+        const cheapest = [...plans].sort((a, b) => a.priceZAR - b.priceZAR)[0]
+        setStartingPrice(cheapest.priceZAR)
+        setStatus('ready')
+      })
+      .catch(() => {
+        if (cancelled) return
+        setStatus('error')
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  return (
+    <Section id="apps">
+      <Label number="01">Products</Label>
+      <h2 className={styles.title}>PackStack Booking</h2>
+      <p className={styles.intro}>
+        Real-time online booking software for salons and service businesses - the system a
+        client books into, and the dashboard a business runs from.
+      </p>
+
+      <div className={styles.body}>
+        <dl className={styles.featureList}>
+          {features.map(([term, desc]) => (
+            <div key={term} className={styles.featureRow}>
+              <dt>{term}</dt>
+              <dd>{desc}</dd>
             </div>
-            <h3 className={styles.tileTitle}>More Apps Coming</h3>
-            <p className={styles.tileDesc}>
-              We're building out the platform one app at a time. Tell us what your business
-              needs next.
-            </p>
-            <span className={styles.soonBadge}>Coming Soon</span>
+          ))}
+        </dl>
+
+        <div className={styles.aside}>
+          <div className={styles.price}>
+            {status === 'ready' && startingPrice !== null && (
+              <>From R{startingPrice.toLocaleString('en-ZA')}<span>/month</span></>
+            )}
+            {status === 'loading' && <span className={styles.priceLoading}>Loading pricing…</span>}
+            {status === 'error' && <span className={styles.priceLoading}>See pricing</span>}
           </div>
-        </Droplet>
+          <Button to="/salon-booking">See the booking app</Button>
+        </div>
       </div>
-    </section>
+    </Section>
   )
 }

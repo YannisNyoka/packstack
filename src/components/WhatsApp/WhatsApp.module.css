@@ -1,76 +1,53 @@
-.btn {
+.wrap {
   position: fixed;
-  bottom: 5.5rem;
-  right: 2rem;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: #25d366;
+  bottom: var(--space-5);
+  right: var(--space-5);
+  z-index: 90;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 90;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
+  gap: var(--space-3);
 }
 
+.btn {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  transition: background var(--motion-fast) var(--ease);
+}
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-}
-
-.icon {
-  width: 26px;
-  height: 26px;
-  color: #fff;
+  background: var(--accent);
 }
 
 .tooltip {
-  position: absolute;
-  right: 62px;
-  bottom: 50%;
-  transform: translateY(50%);
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  white-space: nowrap;
+  background: var(--surface);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  box-shadow: var(--shadow-hover);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(50%) translateX(10px); }
-  to { opacity: 1; transform: translateY(50%) translateX(0); }
+  gap: var(--space-3);
+  white-space: nowrap;
 }
 
 .tooltip span {
-  font-size: 0.83rem;
-  font-weight: 600;
-  color: var(--navy);
+  font-size: 0.82rem;
+  color: var(--ink);
 }
 
 .close {
   background: none;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.7rem;
+  color: var(--ink-2);
   padding: 0;
-  line-height: 1;
-  transition: color 0.15s;
+  display: flex;
 }
-.close:hover { color: var(--navy); }
+.close:hover { color: var(--ink); }
 
 @media (max-width: 480px) {
-  .btn {
-    bottom: 5rem;
-    right: 1.5rem;
-    width: 48px;
-    height: 48px;
-  }
-  .icon { width: 24px; height: 24px; }
+  .wrap { bottom: var(--space-4); right: var(--space-4); }
   .tooltip { display: none; }
 }

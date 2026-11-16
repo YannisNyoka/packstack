@@ -1,20 +1,26 @@
 import { useState } from 'react'
-import { CheckCircle2, Calendar } from 'lucide-react'
+import { Section } from '../ui/Section'
+import { Label } from '../ui/Label'
+import { Button } from '../ui/Button'
+import { CONTACT_EMAIL, WHATSAPP_NUMBER } from '../../lib/constants'
 import styles from './Contact.module.css'
 
-const DEMO_BOOKING_URL = 'https://outlook.office.com/book/packstack36gmailcom@mylife.unisa.ac.za/'
+const SERVICE_OPTIONS = [
+  { value: '', label: 'Select an option…' },
+  { value: 'packstack', label: 'Booking Appointment (Salon Booking Software)' },
+  { value: 'web', label: 'Custom Web Development' },
+  { value: 'app', label: 'Custom App Development' },
+  { value: 'seo', label: 'SEO' },
+  { value: 'social', label: 'Social Media' },
+  { value: 'other', label: 'Something Else' },
+]
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    service: '',
-    message: '',
-  })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
 
   const handleChange = (e) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const handleSubmit = async (e) => {
@@ -28,127 +34,125 @@ export default function Contact() {
       })
       if (!res.ok) throw new Error('Failed')
       setStatus('success')
-      setForm({ name: '', email: '', service: '', message: '' })
+      setForm({ name: '', email: '', phone: '', service: '', message: '' })
     } catch {
       setStatus('error')
     }
   }
 
   return (
-    <section className={styles.section} id="contact">
-      <div className={styles.box}>
-        <div className={styles.glow} />
+    <Section id="contact">
+      <div className={styles.grid}>
+        <div className={styles.left}>
+          <Label>Contact</Label>
+          <h2 className={styles.title}>Tell us what you need.</h2>
 
-        <div className={styles.label}>Let's Get You Started</div>
-        <h2 className={styles.title}>Ready to Grow Your Business?</h2>
-        <p className={styles.sub}>
-          Tell us whether you want to get your business booking online with PackStack, or
-          need something custom-built — we'll get back to you within 24 hours.
-        </p>
-
-        {status === 'success' ? (
-          <div className={styles.successMsg}>
-            <div className={styles.successIcon}>
-              <CheckCircle2 size={28} strokeWidth={2} color="var(--blue)" />
-            </div>
-            <h3>Message Received!</h3>
-            <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
-          </div>
-        ) : (
-          <>
-            <div className={styles.demoCta}>
-              <a href={DEMO_BOOKING_URL} target="_blank" rel="noopener noreferrer" className={styles.demoBtn}>
-                <Calendar size={18} strokeWidth={2} />
-                Book a Demo Call
-              </a>
-              <span className={styles.demoNote}>Pick a time that works for you — no forms, no waiting.</span>
-            </div>
-
-            <div className={styles.divider}>
-              <span>or send us a message</span>
-            </div>
-
+          {status === 'success' ? (
+            <p className={styles.success}>Thanks, we'll be in touch within one working day.</p>
+          ) : (
             <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.row}>
+              <div className={styles.row}>
+                <div className={styles.field}>
+                  <label className={styles.fieldLabel} htmlFor="contact-name">Name</label>
+                  <input
+                    id="contact-name"
+                    className={styles.input}
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label className={styles.fieldLabel} htmlFor="contact-email">Email</label>
+                  <input
+                    id="contact-email"
+                    className={styles.input}
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
               <div className={styles.field}>
-                <label className={styles.fieldLabel}>Full Name</label>
+                <label className={styles.fieldLabel} htmlFor="contact-phone">Phone (optional)</label>
                 <input
+                  id="contact-phone"
                   className={styles.input}
-                  type="text"
-                  name="name"
-                  placeholder="Jane Smith"
-                  value={form.name}
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
                   onChange={handleChange}
+                />
+              </div>
+
+              <div className={styles.field}>
+                <label className={styles.fieldLabel} htmlFor="contact-service">What do you need?</label>
+                <select
+                  id="contact-service"
+                  className={styles.input}
+                  name="service"
+                  value={form.service}
+                  onChange={handleChange}
+                  required
+                >
+                  {SERVICE_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className={styles.field}>
+                <label className={styles.fieldLabel} htmlFor="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  className={`${styles.input} ${styles.textarea}`}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={5}
                   required
                 />
               </div>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>Email Address</label>
-                <input
-                  className={styles.input}
-                  type="email"
-                  name="email"
-                  placeholder="jane@company.com"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
 
-            <div className={styles.field}>
-              <label className={styles.fieldLabel}>What Do You Need?</label>
-              <select
-                className={styles.input}
-                name="service"
-                value={form.service}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select an option…</option>
-                <option value="packstack">Booking Appointment (Salon Booking Software)</option>
-                <option value="web">Custom Web Development</option>
-                <option value="app">Custom App Development</option>
-                <option value="seo">SEO</option>
-                <option value="social">Social Media</option>
-                <option value="other">Something Else</option>
-              </select>
-            </div>
+              {status === 'error' && (
+                <p className={styles.errorMsg}>Something went wrong. Please try again or email us directly.</p>
+              )}
 
-            <div className={styles.field}>
-              <label className={styles.fieldLabel}>Tell Us About Your Business</label>
-              <textarea
-                className={`${styles.input} ${styles.textarea}`}
-                name="message"
-                placeholder="What kind of business, and what you're looking for…"
-                value={form.message}
-                onChange={handleChange}
-                rows={4}
-                required
-              />
-            </div>
-
-            {status === 'error' && (
-              <p className={styles.errorMsg}>
-                Something went wrong. Please try again or email us directly.
-              </p>
-            )}
-
-            <button
-              type="submit"
-              className={styles.submitBtn}
-              disabled={status === 'loading'}
-            >
-              {status === 'loading' ? 'Sending…' : 'Send Message →'}
-            </button>
-
-            <p className={styles.note}>
-              No commitment. No spam. Just a conversation.
-            </p>
+              <Button type="submit" disabled={status === 'loading'} className={styles.submitBtn}>
+                {status === 'loading' ? 'Sending…' : 'Send message'}
+              </Button>
             </form>
-          </>
-        )}
+          )}
+        </div>
+
+        <div className={styles.right}>
+          <dl className={styles.infoList}>
+            <div className={styles.infoRow}>
+              <dt>Email</dt>
+              <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
+            </div>
+            <div className={styles.infoRow}>
+              <dt>WhatsApp</dt>
+              <dd>{WHATSAPP_NUMBER}</dd>
+            </div>
+            <div className={styles.infoRow}>
+              <dt>Location</dt>
+              <dd>Johannesburg, South Africa</dd>
+            </div>
+            <div className={styles.infoRow}>
+              <dt>Response time</dt>
+              <dd>We reply within one working day.</dd>
+            </div>
+          </dl>
+        </div>
       </div>
-    </section>
+    </Section>
   )
 }

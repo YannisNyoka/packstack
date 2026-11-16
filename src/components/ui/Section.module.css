@@ -1,0 +1,20 @@
+.section {
+  background: var(--paper);
+  padding: var(--space-9) 0;
+}
+
+.hairline {
+  border-top: var(--border-w) solid var(--line);
+}
+
+.night {
+  background: var(--night);
+  color: var(--paper);
+}
+.night.hairline {
+  border-top-color: var(--night-line);
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--space-7) 0; }
+}

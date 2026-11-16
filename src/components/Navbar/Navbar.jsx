@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { X } from 'lucide-react'
+import { IconClose } from '../ui/Icons'
+import { CAL_LINK } from '../../lib/constants'
 import styles from './Navbar.module.css'
 
 const links = [
   { label: 'Products', path: '/salon-booking' },
+  { label: 'Work', path: '/portfolio' },
   { label: 'Pricing', path: '/salon-booking', hash: '#pricing' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Contact Us', path: '/', hash: '#contact' },
-  { label: 'About Us', path: '/about' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/', hash: '#contact' },
 ]
 
 export default function Navbar() {
@@ -52,11 +53,11 @@ export default function Navbar() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <button className={styles.logo} onClick={goHome}>
-          Pack<span>Stack</span>
+          PackStack
         </button>
 
         <ul className={styles.links}>
-          {links.map(l => (
+          {links.map((l) => (
             <li key={l.label}>
               <button onClick={() => handleNav(l)} className={styles.navLink}>
                 {l.label}
@@ -65,16 +66,11 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button className={styles.cta} onClick={() => { setMenuOpen(false); navigate('/signup') }}>
-          Get Started
-        </button>
+        <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" className={styles.cta}>
+          Book a call
+        </a>
 
-        <button
-          className={styles.hamburger}
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <span />
+        <button className={styles.hamburger} onClick={() => setMenuOpen(true)} aria-label="Open menu">
           <span />
           <span />
         </button>
@@ -83,22 +79,17 @@ export default function Navbar() {
       {menuOpen && (
         <div className={styles.mobileMenu}>
           <button className={styles.close} onClick={() => setMenuOpen(false)} aria-label="Close menu">
-            <X size={22} strokeWidth={2} />
+            <IconClose size={22} />
           </button>
-          <div className={styles.mobileLogo}>
-            Pack<span>Stack</span>
-          </div>
-          {links.map(l => (
+          <div className={styles.mobileLogo}>PackStack</div>
+          {links.map((l) => (
             <button key={l.label} onClick={() => handleNav(l)} className={styles.mobileLink}>
               {l.label}
             </button>
           ))}
-          <button
-            className={styles.mobileCta}
-            onClick={() => { setMenuOpen(false); navigate('/signup') }}
-          >
-            Get Started
-          </button>
+          <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" className={styles.mobileCta}>
+            Book a call
+          </a>
         </div>
       )}
     </>
