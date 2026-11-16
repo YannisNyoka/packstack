@@ -118,7 +118,6 @@ export default function PlatformHero() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.badge}>One platform. Growing app by app.</div>
         <h1 className={styles.title}>
           Everything your business needs,
           <br />
