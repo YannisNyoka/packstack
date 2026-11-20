@@ -113,7 +113,7 @@
   }
   .headerPhone {
     width: 150px;
-    justify-self: start;
+    justify-self: end;
   }
 }
 
