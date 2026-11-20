@@ -107,10 +107,13 @@ Navbar's "Book a call" button (desktop and mobile).
 - **Fonts are loaded from Google Fonts**, not self-hosted/subset woff2 as
   the brief's performance budget calls for. Fine functionally, but it's the
   right next step if the Lighthouse/JS-weight targets get audited for real.
-- **No real product screenshots exist yet** anywhere in `public/` (admin
-  calendar, mobile booking flow) - the Home page's "01 Products" section is
-  text-only (a definition list) rather than screenshots + definition list,
-  because fabricating a screenshot would be worse than not having one.
+- **Real product screenshots** now live at `public/screenshots/booking-flow.png`
+  and `public/screenshots/admin-dashboard.png` - both real NXL Beauty Bar
+  pages, cropped to remove browser/OS chrome, each paired with the cluster
+  of benefits it actually demonstrates in the Home page's "01 Products"
+  section (`AppGrid.jsx`). No screenshots exist yet for SalonBooking's own
+  "01 Booking Appointment" section (`Services.jsx`), which is still
+  text-only for the same reason the Products section used to be.
 - **JSON-LD**: `Organization` + `LocalBusiness` + `SoftwareApplication` live
   on the Home page; `FAQPage` lives on SalonBooking. No per-page JSON-LD
   audit beyond that was done.
@@ -119,3 +122,38 @@ Navbar's "Book a call" button (desktop and mobile).
   alt text on the one real screenshot grid that exists on `/portfolio`,
   skip link, hairlines instead of shadows, minimal JS) but nobody has run
   the actual audit tools against a deployed build yet.
+
+## Hero video playback latency
+
+Both hero videos (`Hero.jsx`'s local clips, `PlatformHero.jsx`'s
+superadmin-uploaded one) had a real "takes a moment to start" problem,
+fixed without touching their visual design:
+
+- `Hero.jsx` was calling `.load()` imperatively on mount, right on top of
+  the `<video autoPlay>` attribute's own already-in-flight load - aborting
+  and restarting the fetch from zero. Fixed by skipping that imperative
+  call on the first run; it still runs normally on every later slide
+  change, which does need it (changing a child `<source>`'s `src` doesn't
+  reload on its own).
+- `PlatformHero.jsx` couldn't start loading its real video/images at all
+  until `getHeroContent()`'s API call resolved - a full network round-trip
+  blocking the very first byte of video. Fixed two ways: the result is now
+  cached in `sessionStorage` (`src/components/PlatformHero/PlatformHero.jsx`)
+  so a repeat view within the same session renders instantly, still
+  revalidating in the background so a superadmin's edit shows up on the
+  very next load; and `src/lib/cloudinaryOptimize.js`'s `withAutoQuality()`
+  appends Cloudinary's `f_auto,q_auto` transform flags to any
+  Cloudinary-hosted URL, so the CDN serves a smaller transcoded version
+  instead of the raw uploaded file - free, since Cloudinary does this
+  on-demand without re-uploading anything.
+- **Not fixed, and worth knowing about**: `Hero.jsx`'s 5 local clips in
+  `public/hero-videos/` are large (2-6MB each, `hair.mp4` is 6.1MB) and are
+  served as-is from Vercel's static hosting - no compression tool (ffmpeg,
+  ImageMagick) was available in this environment to re-encode them. The
+  biggest further win here would be either compressing them (e.g. with
+  HandBrake/ffmpeg, targeting something like 1080p/3-4Mbps H.264) or
+  uploading them to Cloudinary too so they get the same automatic
+  format/quality negotiation as the platform hero video - that would need
+  the real `CLOUDINARY_*` credentials and a decision to spend that
+  account's storage/bandwidth quota on marketing assets, so it wasn't done
+  without asking first.

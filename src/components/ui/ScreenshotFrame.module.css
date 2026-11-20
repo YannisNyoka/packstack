@@ -26,8 +26,32 @@
   border: var(--border-w) solid var(--line);
 }
 
+/* The "mat" - a paper-coloured inset the real screenshot sits inside, with
+   its own hairline + radius, cropped to one shared aspect ratio so every
+   screenshot across the site reads as one consistent system regardless of
+   the source page's own colours or native crop. */
+.mat {
+  background: var(--paper);
+  padding: var(--space-5);
+}
+
+.mat .img {
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.mat .cropWide {
+  aspect-ratio: 2.1 / 1;
+  object-fit: cover;
+  object-position: top;
+}
+
 .img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media (max-width: 600px) {
+  .mat { padding: var(--space-3); }
 }

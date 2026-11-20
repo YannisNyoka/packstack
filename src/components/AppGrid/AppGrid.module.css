@@ -1,3 +1,11 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-8);
+  align-items: start;
+  margin-bottom: var(--space-9);
+}
+
 .title {
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 400;
@@ -9,13 +17,36 @@
   font-size: 1.1rem;
   color: var(--ink-2);
   max-width: var(--text-measure);
-  margin-bottom: var(--space-8);
 }
 
-.body {
-  display: grid;
-  grid-template-columns: 7fr 4fr;
+.headerPhone {
+  width: 190px;
+  flex-shrink: 0;
+  justify-self: end;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-9);
+  margin-bottom: var(--space-9);
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.groupReverse {
+  grid-template-columns: 2fr 3fr;
+}
+.groupReverse .shot { order: 2; }
+.groupReverse .featureList { order: 1; }
+
+.shot {
+  width: 100%;
 }
 
 .featureList {
@@ -24,10 +55,7 @@
 }
 
 .featureRow {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: var(--space-5);
-  padding: var(--space-5) 0;
+  padding: var(--space-4) 0;
   border-top: var(--border-w) solid var(--line);
 }
 .featureRow:last-child {
@@ -37,25 +65,26 @@
 .featureRow dt {
   font-weight: 500;
   color: var(--ink);
+  margin-bottom: var(--space-1);
 }
 
 .featureRow dd {
   color: var(--ink-2);
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .aside {
-  border-left: var(--border-w) solid var(--line);
-  padding-left: var(--space-7);
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: var(--space-6);
-  align-self: start;
+  padding-top: var(--space-7);
+  border-top: var(--border-w) solid var(--line);
 }
 
 .price {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: var(--ink);
 }
 .price span {
@@ -71,7 +100,23 @@
 }
 
 @media (max-width: 900px) {
-  .body { grid-template-columns: 1fr; gap: var(--space-6); }
-  .aside { border-left: none; border-top: var(--border-w) solid var(--line); padding-left: 0; padding-top: var(--space-6); }
-  .featureRow { grid-template-columns: 1fr; gap: var(--space-2); }
+  .group, .groupReverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .groupReverse .shot { order: 0; }
+  .groupReverse .featureList { order: 0; }
+
+  .header {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .headerPhone {
+    width: 150px;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .aside { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
 }

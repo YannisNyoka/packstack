@@ -1,0 +1,106 @@
+.mockup {
+  width: 220px;
+  transform-style: preserve-3d;
+}
+
+.body {
+  position: relative;
+  background: linear-gradient(145deg, #3a3a3e, #0c0c0e 65%);
+  border-radius: 38px;
+  padding: 30px 11px 36px;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
+    inset 0 1px 3px rgba(255, 255, 255, 0.12);
+}
+
+.speaker {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 5px;
+  border-radius: 3px;
+  background: #000;
+}
+
+.screen {
+  aspect-ratio: 9 / 18.5;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.homeButton {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.sideButton {
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(145deg, #4a4a4e, #1a1a1c);
+}
+
+.volumeUp {
+  left: -3px;
+  top: 92px;
+  height: 32px;
+  border-radius: 2px 0 0 2px;
+}
+
+.volumeDown {
+  left: -3px;
+  top: 134px;
+  height: 32px;
+  border-radius: 2px 0 0 2px;
+}
+
+.power {
+  right: -3px;
+  top: 112px;
+  height: 46px;
+  border-radius: 0 2px 2px 0;
+}
+
+/* 3D tilt - rotateY sign confirmed empirically: positive recedes the right
+   edge (device appears to face left), negative recedes the left edge
+   (device appears to face right). Each direction also darkens its own
+   receding inner edge slightly, to read as the device's own side/thickness
+   rather than just a flat rotated rectangle. */
+.tiltLeft {
+  transform: perspective(1000px) rotateY(22deg) rotateX(3deg);
+  filter: drop-shadow(0 20px 22px rgba(17, 17, 17, 0.25));
+}
+.tiltLeft .body {
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
+    inset 0 1px 3px rgba(255, 255, 255, 0.12),
+    inset -8px 0 14px -6px rgba(0, 0, 0, 0.6);
+}
+
+.tiltRight {
+  transform: perspective(1000px) rotateY(-22deg) rotateX(3deg);
+  filter: drop-shadow(0 20px 22px rgba(17, 17, 17, 0.25));
+}
+.tiltRight .body {
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
+    inset 0 1px 3px rgba(255, 255, 255, 0.12),
+    inset 8px 0 14px -6px rgba(0, 0, 0, 0.6);
+}

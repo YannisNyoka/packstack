@@ -37,8 +37,21 @@ export default function Hero() {
     return () => clearInterval(id)
   }, [])
 
+  // Skips the very first run (mount): the <video> tag's own `autoPlay` +
+  // `preload="auto"` attributes already start loading the initial slide as
+  // early as possible, so calling .load() again right after would abort
+  // that in-flight fetch and restart it from zero - the actual cause of the
+  // visible delay before the first clip appears. Only real slide changes
+  // (the source swapping under the same <video> element) need the manual
+  // load()/play() - the browser has no other way to notice a child
+  // <source>'s src changed.
+  const isFirstRun = useRef(true)
   useEffect(() => {
     if (prefersReducedMotion || !videoRef.current) return
+    if (isFirstRun.current) {
+      isFirstRun.current = false
+      return
+    }
     videoRef.current.load()
     videoRef.current.play().catch(() => {})
   }, [slideIndex])
@@ -53,6 +66,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          preload="auto"
           onCanPlay={() => setVideoReady(true)}
           aria-hidden="true"
         >

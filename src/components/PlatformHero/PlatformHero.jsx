@@ -2,9 +2,39 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './PlatformHero.module.css'
 import { getHeroContent } from '../../api/siteContent'
+import { withAutoQuality } from '../../lib/cloudinaryOptimize'
 
 const SLIDE_INTERVAL_MS = 4500
 const SLIDE_TRANSITION_MS = 800
+
+// Caches the last-fetched hero content for the rest of this browser
+// session - lets a repeat visit (navigate away and back, or open a second
+// tab) render the real hero media immediately from cache instead of
+// waiting on a fresh network round-trip every time, which is otherwise the
+// single biggest source of "the video takes a moment to start" on this
+// section (the <video>/carousel can't even begin loading its real src
+// until this API call resolves). Still revalidates in the background every
+// mount, so a superadmin's edit shows up on the very next page load, not
+// just the next browser session.
+const CONTENT_CACHE_KEY = 'packstack_hero_content_v1'
+
+function readCachedContent() {
+  try {
+    const raw = sessionStorage.getItem(CONTENT_CACHE_KEY)
+    return raw ? JSON.parse(raw) : null
+  } catch {
+    return null
+  }
+}
+
+function writeCachedContent(data) {
+  try {
+    sessionStorage.setItem(CONTENT_CACHE_KEY, JSON.stringify(data))
+  } catch {
+    // sessionStorage unavailable (private browsing, storage full, etc.) -
+    // fine, this is a pure optimization, not a correctness requirement.
+  }
+}
 
 /**
  * Full-bleed background behind the hero text - either a looping, swiping
@@ -23,11 +53,12 @@ function HeroBackground({ content }) {
     return (
       <video
         className={styles.bgVideo}
-        src={content.heroVideoUrl}
+        src={withAutoQuality(content.heroVideoUrl)}
         autoPlay={!prefersReducedMotion}
         loop
         muted
         playsInline
+        preload="auto"
       />
     )
   }
@@ -85,7 +116,7 @@ function HeroImageCarousel({ images, reducedMotion }) {
         onTransitionEnd={handleTransitionEnd}
       >
         {slides.map((url, i) => (
-          <div key={url + i} className={styles.carouselSlide} style={{ backgroundImage: `url(${url})` }} />
+          <div key={url + i} className={styles.carouselSlide} style={{ backgroundImage: `url(${withAutoQuality(url)})` }} />
         ))}
       </div>
     </div>
@@ -93,17 +124,20 @@ function HeroImageCarousel({ images, reducedMotion }) {
 }
 
 export default function PlatformHero() {
-  const [content, setContent] = useState(null)
+  const [content, setContent] = useState(readCachedContent)
 
   useEffect(() => {
     let cancelled = false
     getHeroContent()
       .then((data) => {
-        if (!cancelled) setContent(data)
+        if (cancelled) return
+        setContent(data)
+        writeCachedContent(data)
       })
       .catch(() => {
-        // Stays null - HeroBackground's no-content branch renders the plain
-        // gradient fallback, same as "nothing configured yet".
+        // Stays whatever it already was (cached content, or null) -
+        // HeroBackground's no-content branch renders the plain gradient
+        // fallback if there's truly nothing to show.
       })
     return () => {
       cancelled = true
