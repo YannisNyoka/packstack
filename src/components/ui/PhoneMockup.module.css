@@ -3,30 +3,24 @@
   transform-style: preserve-3d;
 }
 
+/* Modern (home-button-less) iPhone proportions: a very thin uniform bezel
+   around an edge-to-edge screen, continuous-curve corners, and a Dynamic
+   Island sitting on top of the screen content rather than a notch cut into
+   a thick bezel. */
 .body {
   position: relative;
-  background: linear-gradient(145deg, #3a3a3e, #0c0c0e 65%);
-  border-radius: 38px;
-  padding: 30px 11px 36px;
+  background: linear-gradient(155deg, #3a3a3d, #0a0a0b 60%);
+  border-radius: 52px;
+  padding: 7px;
   box-shadow:
-    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
-    inset 0 1px 3px rgba(255, 255, 255, 0.12);
-}
-
-.speaker {
-  position: absolute;
-  top: 13px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 46px;
-  height: 5px;
-  border-radius: 3px;
-  background: #000;
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
 .screen {
-  aspect-ratio: 9 / 18.5;
-  border-radius: 22px;
+  position: relative;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 46px;
   overflow: hidden;
   background: #000;
 }
@@ -39,15 +33,16 @@
   display: block;
 }
 
-.homeButton {
+.dynamicIsland {
   position: absolute;
-  bottom: 9px;
+  z-index: 2;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 34%;
+  height: 16px;
+  background: #000;
+  border-radius: 10px;
 }
 
 .sideButton {
@@ -57,25 +52,28 @@
   background: linear-gradient(145deg, #4a4a4e, #1a1a1c);
 }
 
+.action {
+  left: -3px;
+  top: 62px;
+  height: 18px;
+}
+
 .volumeUp {
   left: -3px;
   top: 92px;
-  height: 32px;
-  border-radius: 2px 0 0 2px;
+  height: 30px;
 }
 
 .volumeDown {
   left: -3px;
-  top: 134px;
-  height: 32px;
-  border-radius: 2px 0 0 2px;
+  top: 130px;
+  height: 30px;
 }
 
 .power {
   right: -3px;
-  top: 112px;
-  height: 46px;
-  border-radius: 0 2px 2px 0;
+  top: 100px;
+  height: 52px;
 }
 
 /* 3D tilt - rotateY sign confirmed empirically: positive recedes the right
@@ -89,8 +87,8 @@
 }
 .tiltLeft .body {
   box-shadow:
-    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
-    inset 0 1px 3px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15),
     inset -8px 0 14px -6px rgba(0, 0, 0, 0.6);
 }
 
@@ -100,7 +98,7 @@
 }
 .tiltRight .body {
   box-shadow:
-    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
-    inset 0 1px 3px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15),
     inset 8px 0 14px -6px rgba(0, 0, 0, 0.6);
 }
